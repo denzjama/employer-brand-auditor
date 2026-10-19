@@ -1,0 +1,17 @@
+{
+  "name": "employer-brand-auditor",
+  "owner": {
+    "name": "Denis Zamaletdinov"
+  },
+  "metadata": {
+    "description": "Single-plugin marketplace for Employer Brand Auditor."
+  },
+  "plugins": [
+    {
+      "name": "employer-brand-auditor",
+      "source": "./",
+      "version": "0.1.5",
+      "description": "Evidence-first audits for employer brands, EVP, careers content, job ads, and talent marketing."
+    }
+  ]
+}

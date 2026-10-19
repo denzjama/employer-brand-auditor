@@ -1,0 +1,60 @@
+{
+  "status": "PILOT CANDIDATE",
+  "based_on": "v0.1.4 freeze 4",
+  "plugin_version": "0.1.4",
+  "manifest_version_claude_plugin": "0.1.4",
+  "recorded_at_local": "2026-10-07T22:24:22",
+  "validator": "PASSED, 10 checks (full output in validator-output.txt)",
+  "note": "Synthetic calibration closed by product decision. These files must not change during the real-world pilot; any change requires a new version and a new snapshot.",
+  "files": {
+    ".claude-plugin/plugin.json": {
+      "sha256": "26256799f465bb440974fdc05b1171e61cdeeac91c0b5978bc571ac26d461aec",
+      "mtime_local": "2026-10-07T18:57:27"
+    },
+    "CLAUDE.md": {
+      "sha256": "df5c341d21b925aca2e28b97c7940171e7de56fc661543528972c88715916127",
+      "mtime_local": "2026-10-07T21:23:54"
+    },
+    "methodology/evidence-rules.md": {
+      "sha256": "0fae8b93568c7fc71c203fc95b496bc15b611286ea8b428bef032e1e0f7c1557",
+      "mtime_local": "2026-10-07T21:23:16"
+    },
+    "methodology/genericity-test.md": {
+      "sha256": "9033651266ed3cd2d2b056b5cf9bccbd49b7cd4e1caeba35a60b3c9c5af4d3b5",
+      "mtime_local": "2026-10-07T18:56:31"
+    },
+    "methodology/output-contracts.md": {
+      "sha256": "05196615dd11e644d264548591fb5aa93dc0c28338002013e8fa88a9cece4782",
+      "mtime_local": "2026-10-07T21:23:16"
+    },
+    "methodology/red-flags.md": {
+      "sha256": "bc023df3873c49c30b3f080dabcec5fa5cd6c39397eaaa19c9f002a06a8bb332",
+      "mtime_local": "2026-10-07T18:56:06"
+    },
+    "methodology/scoring-rubric.md": {
+      "sha256": "c0e612fbdf6750eab4925fe6be5b693570f6ce7b463ca2b36d066e62f8a45c18",
+      "mtime_local": "2026-10-07T18:56:06"
+    },
+    "methodology/terminology.md": {
+      "sha256": "bd5b6c63e7732880d3f361cc3e66bc703e9afaee3ca14538fb0bffacbbb27277",
+      "mtime_local": "2026-10-07T21:23:16"
+    },
+    "plugin.json": {
+      "sha256": "0992cc494d8a5c86db2cd9597a35e3ee836eec8619af0e29c293bc690cb10ed3",
+      "mtime_local": "2026-10-07T18:57:27"
+    },
+    "skills/career-content-review/SKILL.md": {
+      "sha256": "da56c46eda494e3f6b0116108f49c32999f743b324441b8be83da13b2c7da08f",
+      "mtime_local": "2026-10-07T21:23:16"
+    },
+    "skills/employer-brand-audit/SKILL.md": {
+      "sha256": "58bc9e98d9ae819fa1e41097b7e7761d6a501a9e83daf78301e06397258a8705",
+      "mtime_local": "2026-10-07T21:23:16"
+    },
+    "skills/evp-stress-test/SKILL.md": {
+      "sha256": "c79b8dedb93d76efb5416555560bd0e007e9445b0894edb2664e3dd41eb24b6a",
+      "mtime_local": "2026-10-07T21:23:16"
+    }
+  },
+  "identical_to_freeze_4": true
+}

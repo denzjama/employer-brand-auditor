@@ -1,0 +1,85 @@
+{
+  "status": "METADATA-ONLY REVISION",
+  "plugin_version": "0.1.5",
+  "based_on": "v0.1.4 pilot candidate",
+  "recorded_at_local": "2026-10-19T23:30:00",
+  "change": "Manifests: version 0.1.4 -> 0.1.5, added author {name: Denis Zamaletdinov} and license MIT. CLAUDE.md (developer file, not shipped, not loaded by plugin hosts): version string only. skills/ and methodology/ byte-identical to v0.1.4, so auditor behaviour is unchanged.",
+  "changed_files": [
+    ".claude-plugin/plugin.json",
+    "CLAUDE.md",
+    "plugin.json"
+  ],
+  "unchanged_files": [
+    "methodology/evidence-rules.md",
+    "methodology/genericity-test.md",
+    "methodology/output-contracts.md",
+    "methodology/red-flags.md",
+    "methodology/scoring-rubric.md",
+    "methodology/terminology.md",
+    "skills/career-content-review/SKILL.md",
+    "skills/employer-brand-audit/SKILL.md",
+    "skills/evp-stress-test/SKILL.md"
+  ],
+  "files": {
+    ".claude-plugin/plugin.json": {
+      "sha256": "ca40d6975dfbc33ea02306eb82530126bc969280bebd8c34be46ba7c86779177",
+      "v0.1.4_sha256": "26256799f465bb440974fdc05b1171e61cdeeac91c0b5978bc571ac26d461aec",
+      "changed_from_v0.1.4": true
+    },
+    "CLAUDE.md": {
+      "sha256": "85bfb3efa436e4b2c8ab79f4aee347afc4596fb2e6b7d435c311fe5342418ea0",
+      "v0.1.4_sha256": "df5c341d21b925aca2e28b97c7940171e7de56fc661543528972c88715916127",
+      "changed_from_v0.1.4": true
+    },
+    "methodology/evidence-rules.md": {
+      "sha256": "0fae8b93568c7fc71c203fc95b496bc15b611286ea8b428bef032e1e0f7c1557",
+      "v0.1.4_sha256": "0fae8b93568c7fc71c203fc95b496bc15b611286ea8b428bef032e1e0f7c1557",
+      "changed_from_v0.1.4": false
+    },
+    "methodology/genericity-test.md": {
+      "sha256": "9033651266ed3cd2d2b056b5cf9bccbd49b7cd4e1caeba35a60b3c9c5af4d3b5",
+      "v0.1.4_sha256": "9033651266ed3cd2d2b056b5cf9bccbd49b7cd4e1caeba35a60b3c9c5af4d3b5",
+      "changed_from_v0.1.4": false
+    },
+    "methodology/output-contracts.md": {
+      "sha256": "05196615dd11e644d264548591fb5aa93dc0c28338002013e8fa88a9cece4782",
+      "v0.1.4_sha256": "05196615dd11e644d264548591fb5aa93dc0c28338002013e8fa88a9cece4782",
+      "changed_from_v0.1.4": false
+    },
+    "methodology/red-flags.md": {
+      "sha256": "bc023df3873c49c30b3f080dabcec5fa5cd6c39397eaaa19c9f002a06a8bb332",
+      "v0.1.4_sha256": "bc023df3873c49c30b3f080dabcec5fa5cd6c39397eaaa19c9f002a06a8bb332",
+      "changed_from_v0.1.4": false
+    },
+    "methodology/scoring-rubric.md": {
+      "sha256": "c0e612fbdf6750eab4925fe6be5b693570f6ce7b463ca2b36d066e62f8a45c18",
+      "v0.1.4_sha256": "c0e612fbdf6750eab4925fe6be5b693570f6ce7b463ca2b36d066e62f8a45c18",
+      "changed_from_v0.1.4": false
+    },
+    "methodology/terminology.md": {
+      "sha256": "bd5b6c63e7732880d3f361cc3e66bc703e9afaee3ca14538fb0bffacbbb27277",
+      "v0.1.4_sha256": "bd5b6c63e7732880d3f361cc3e66bc703e9afaee3ca14538fb0bffacbbb27277",
+      "changed_from_v0.1.4": false
+    },
+    "plugin.json": {
+      "sha256": "35f9d801f56fefa2c476600dc6d0c1bdbc06ab3bea43487005b4ccb79186b45d",
+      "v0.1.4_sha256": "0992cc494d8a5c86db2cd9597a35e3ee836eec8619af0e29c293bc690cb10ed3",
+      "changed_from_v0.1.4": true
+    },
+    "skills/career-content-review/SKILL.md": {
+      "sha256": "da56c46eda494e3f6b0116108f49c32999f743b324441b8be83da13b2c7da08f",
+      "v0.1.4_sha256": "da56c46eda494e3f6b0116108f49c32999f743b324441b8be83da13b2c7da08f",
+      "changed_from_v0.1.4": false
+    },
+    "skills/employer-brand-audit/SKILL.md": {
+      "sha256": "58bc9e98d9ae819fa1e41097b7e7761d6a501a9e83daf78301e06397258a8705",
+      "v0.1.4_sha256": "58bc9e98d9ae819fa1e41097b7e7761d6a501a9e83daf78301e06397258a8705",
+      "changed_from_v0.1.4": false
+    },
+    "skills/evp-stress-test/SKILL.md": {
+      "sha256": "c79b8dedb93d76efb5416555560bd0e007e9445b0894edb2664e3dd41eb24b6a",
+      "v0.1.4_sha256": "c79b8dedb93d76efb5416555560bd0e007e9445b0894edb2664e3dd41eb24b6a",
+      "changed_from_v0.1.4": false
+    }
+  }
+}
