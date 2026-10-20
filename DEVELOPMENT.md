@@ -2,7 +2,7 @@
 
 This file is for maintainers and contributors. Claude Code does not load it. User documentation lives in `README.md`, `QUICKSTART.md` and `docs/`.
 
-**Behaviour is frozen at v0.1.4.** The SHA256 of `methodology/`, `skills/`, both manifests and `CLAUDE.md` are recorded in `evals/results/v0.1.4/pilot-candidate/snapshot.json`. v0.1.5 is a metadata-only revision (manifest version, `author`, `license`); its snapshot, with a per-file comparison against v0.1.4, is `evals/results/v0.1.5/metadata-release/snapshot.json`. Any change to those files needs a new version, updated evals, a passing validator and a new snapshot (see `CLAUDE.md`).
+**Behaviour is frozen at v0.1.4.** The SHA256 of `methodology/`, `skills/`, both manifests and `CLAUDE.md` (now `.claude/CLAUDE.md`) are recorded in `evals/results/v0.1.4/pilot-candidate/snapshot.json`. v0.1.5 is a metadata-only revision (manifest version, `author`, `license`); its snapshot, with a per-file comparison against v0.1.4, is `evals/results/v0.1.5/metadata-release/snapshot.json`. Any change to those files needs a new version, updated evals, a passing validator and a new snapshot (see `CLAUDE.md`).
 
 ---
 
@@ -12,7 +12,7 @@ This file is for maintainers and contributors. Claude Code does not load it. Use
 employer-brand-auditor/
   plugin.json                  # portable root manifest (Agent Plugins schema)
   .claude-plugin/plugin.json   # Claude Code manifest
-  CLAUDE.md                    # instructions for future development sessions
+  .claude/CLAUDE.md            # instructions for future development sessions
   README.md
   skills/
     employer-brand-audit/SKILL.md
@@ -110,4 +110,4 @@ None of these exist in v0.1.4.
 
 ## Release packaging
 
-The repository root is the plugin: Claude Code reads `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `skills/` and `methodology/`. Developer files (`CLAUDE.md`, `DEVELOPMENT.md`, `evals/`, `scripts/`) sit alongside and are not loaded at runtime. `claude plugin validate` reports one expected warning: `CLAUDE.md` at the plugin root is not loaded as project context.
+The repository root is the plugin: Claude Code reads `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `skills/` and `methodology/`. Developer files (`.claude/CLAUDE.md`, `DEVELOPMENT.md`, `evals/`, `scripts/`) sit alongside and are not loaded at runtime.

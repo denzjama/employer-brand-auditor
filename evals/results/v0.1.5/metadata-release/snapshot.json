@@ -6,7 +6,7 @@
   "change": "Manifests: version 0.1.4 -> 0.1.5, added author {name: Denis Zamaletdinov} and license MIT. CLAUDE.md (developer file, not shipped, not loaded by plugin hosts): version string only. skills/ and methodology/ byte-identical to v0.1.4, so auditor behaviour is unchanged.",
   "changed_files": [
     ".claude-plugin/plugin.json",
-    "CLAUDE.md",
+    ".claude/CLAUDE.md",
     "plugin.json"
   ],
   "unchanged_files": [
@@ -26,7 +26,7 @@
       "v0.1.4_sha256": "26256799f465bb440974fdc05b1171e61cdeeac91c0b5978bc571ac26d461aec",
       "changed_from_v0.1.4": true
     },
-    "CLAUDE.md": {
+    ".claude/CLAUDE.md": {
       "sha256": "85bfb3efa436e4b2c8ab79f4aee347afc4596fb2e6b7d435c311fe5342418ea0",
       "v0.1.4_sha256": "df5c341d21b925aca2e28b97c7940171e7de56fc661543528972c88715916127",
       "changed_from_v0.1.4": true
@@ -81,5 +81,6 @@
       "v0.1.4_sha256": "c79b8dedb93d76efb5416555560bd0e007e9445b0894edb2664e3dd41eb24b6a",
       "changed_from_v0.1.4": false
     }
-  }
+  },
+  "note_2026_10_20": "CLAUDE.md moved to .claude/CLAUDE.md (content byte-identical, same SHA256) so plugin hosts no longer warn about a root CLAUDE.md. Claude Code still loads it as project instructions for development sessions."
 }

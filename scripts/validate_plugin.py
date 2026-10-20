@@ -21,7 +21,7 @@ EXPECTED_SKILLS = ("employer-brand-audit", "evp-stress-test", "career-content-re
 REQUIRED_FILES = (
     "plugin.json",
     ".claude-plugin/plugin.json",
-    "CLAUDE.md",
+    ".claude/CLAUDE.md",
     "README.md",
     "skills/employer-brand-audit/SKILL.md",
     "skills/evp-stress-test/SKILL.md",
