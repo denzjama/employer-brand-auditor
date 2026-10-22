@@ -10,7 +10,10 @@ These are deliberate choices, not defects.
 - **Missing public evidence does not mean a missing internal practice.** The audit says what candidates can see, not what happens inside the company.
 - **Thin material gives limited results.** With little material, coverage and confidence drop. Below 40% coverage, no score is given.
 - **Scores are structured expert judgements.** The rules and arithmetic are fixed, but judging each criterion involves interpretation. Repeated runs on the same material are usually close, but not identical.
-- **No memory between sessions,** and no web access.
+- **No memory between sessions.**
+- **Collection from the web is a snapshot.** When you name a company, the auditor collects its public candidate-facing pages on that day. Search can miss pages, some sites block automatic reading, and pages change. Types of material it could not find are left out of the score and listed in the report. Quotations are checked against the captured text, which is saved in the source pack.
+- **How pages are read.** With a shell available, the plugin reads pages itself through your connection and keeps their exact wording. Without it, it uses Claude's page-reading tool, which can return part of a page as a paraphrase; the report says when this happened, and only exact wording is quoted.
+- **Regional blocks and certificates.** Some Russian sites refuse VPN or foreign connections, and some use certificates that are not trusted outside Russia. The plugin never bypasses either; see [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) for how to open them.
 - **The HTML report is for the full audit.** EVP stress tests and single-asset reviews reply in the chat.
 - **A full audit with its report takes longer and costs more** than a chat-only answer, typically several minutes, because the report file is written in full. Ask for the audit "here in the chat" if you do not need the file.
 - **The report uses a web font.** Offline, it falls back to a system font; the content is unchanged.

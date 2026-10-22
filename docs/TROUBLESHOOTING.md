@@ -53,11 +53,39 @@
   - For a comparison, supply comparable material for each employer.
   - For pay benchmarking, use a dedicated salary-survey source; it is outside this tool's scope.
 
-## You expected web research
+## Russian sites do not open (VPN, certificates)
 
-- **Symptom:** you gave a URL or a company name and expected the auditor to read your website.
-- **Why it happens:** the auditor does not browse or fetch pages. It works only on the text you supply.
-- **What to do:** paste the page text or attach it as a file.
+- **Symptom:** the report lists Russian pages as unavailable: "blocked from this network", "VPN", HTTP 451, or "certificate not trusted". hh.ru and some company sites are typical.
+- **Why it happens:**
+  - **VPN or foreign address.** Many Russian sites, including hh.ru, refuse connections that come from abroad or through a VPN.
+  - **Certificates.** Some Russian sites use certificates issued by the Russian Trusted Root CA. Operating systems and browsers outside Russia do not trust it by default, so the connection is refused.
+- **What to do:**
+  - **For blocked sites:** turn the VPN off while the audit collects pages, or exclude Russian domains (for example `hh.ru`, `.ru`, `.рф`) from the VPN in its split-tunnelling settings. If you use a proxy in Russia, set it for the session: `export HTTPS_PROXY=http://host:port` before starting Claude Code.
+  - **For certificate errors:** you can let the plugin trust the Russian root certificate for its own page fetches only, without changing your system. Download the root certificate from the official Gosuslugi certificates page, convert it to PEM if needed, and save it as `~/.eb-auditor/extra-ca.pem`. The plugin's fetch script then accepts sites signed by it; nothing else on your computer changes.
+
+    ```bash
+    mkdir -p ~/.eb-auditor
+    ```
+
+    ```bash
+    openssl x509 -inform der -in ~/Downloads/russian_trusted_root_ca.cer -out ~/.eb-auditor/extra-ca.pem
+    ```
+
+    Trusting a root certificate is your decision: it lets that authority vouch for any site the plugin opens.
+  - The plugin never turns certificate checks off and never tries to get around a block or a captcha. If a site stays closed, paste its text into the chat.
+
+## The auditor did not find the company's pages
+
+- **Symptom:** you named a company and the reply says nothing usable was found, or the report has low coverage.
+- **Why it happens:**
+  - the name is ambiguous;
+  - the company has little public candidate-facing material;
+  - its site blocks automatic reading;
+  - web tools are not available in your environment, or you declined the permission to open pages.
+- **What to do:**
+  - add details: industry, city, the careers-site address;
+  - allow page access when Claude Code asks;
+  - or paste the pages' text.
 
 ## You expected the auditor to know the company
 

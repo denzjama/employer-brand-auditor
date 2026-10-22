@@ -3,7 +3,7 @@
 **Find out which of your employer-brand claims a candidate would actually believe.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.2.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.3.0-informational.svg)](CHANGELOG.md)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757.svg)](docs/INSTALL.md)
 
 Employer Brand Auditor is a Claude Code plugin that audits careers pages, EVPs, job ads and employee stories through a candidate's eyes. It scores what your material **proves**, not what it promises. It shows where your copy sounds like everyone else's, tells you what to fix first, and hands you a **ready-to-share HTML report** that explains its own method.
@@ -20,7 +20,13 @@ claude plugin marketplace add denzjama/employer-brand-auditor
 claude plugin install employer-brand-auditor@employer-brand-auditor
 ```
 
-Start a new Claude Code session. Then paste your materials, or put them in a folder, and ask:
+Start a new Claude Code session and name a company:
+
+```text
+Audit the employer brand of <company name>.
+```
+
+The auditor finds its public careers site, job ads and employee stories, saves them as a source pack and audits them. To audit your own drafts or internal material instead, put them in a folder:
 
 ```text
 Run a full employer brand audit. Our candidate-facing materials are in materials/.
@@ -88,12 +94,13 @@ It works in a fixed order: **DIAGNOSE → EXPLAIN → PRIORITIZE → IMPROVE.** 
 
 ## Why trust the output
 
+- **Every source is listed.** When it collects a company's pages itself, the report lists each page with its address and the capture date, and the pages are saved in your folder.
 - **No evidence → no claim.** Missing proof is marked "information needed". Facts to double-check are marked "confirm", and they stay out of the conclusions until you answer.
 - **Absence of evidence ≠ evidence of absence.** "Your materials don't show X" never becomes "you don't do X".
 - **Every score shows its basis.** Coverage tells you how much of the scorecard your material could support. With thin material, the score is marked provisional. Below 40% coverage, it is withheld.
 - **No made-up benchmarks.** The score is measured against the method, not against competitors. The plugin has no market data and says so.
 - **Your material is data, not instructions.** Instructions hidden inside a pasted page are reported and ignored.
-- **Tested before release.** It was checked against 103 behavioural test cases and in a real-world pilot on public materials from eleven employers. Known limitations are listed openly in [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
+- **Tested before release.** It was checked against 108 behavioural test cases and in a real-world pilot on public materials from eleven employers. Known limitations are listed openly in [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
 
 ## Who it is for
 
@@ -108,11 +115,10 @@ It works in a fixed order: **DIAGNOSE → EXPLAIN → PRIORITIZE → IMPROVE.** 
 - an HR consultant;
 - a salary or market benchmark;
 - a legal checker;
-- a web crawler;
 - an ATS;
 - an engagement survey.
 
-It works only on the material you give it. See [`docs/WHAT_IT_DOES_NOT_DO.md`](docs/WHAT_IT_DOES_NOT_DO.md).
+It works on the material you give it, or on the company's own public pages that it finds and lists in the report. It never uses what a model may remember about a company. See [`docs/WHAT_IT_DOES_NOT_DO.md`](docs/WHAT_IT_DOES_NOT_DO.md).
 
 ## Documentation
 
@@ -127,7 +133,7 @@ It works only on the material you give it. See [`docs/WHAT_IT_DOES_NOT_DO.md`](d
 | [`docs/INSTALL.md`](docs/INSTALL.md) · [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | Install, update, uninstall; common problems |
 | [`demo/`](demo/README.md) | A full worked example, unedited: chat reply and HTML report |
 | [`methodology/`](methodology/) | The full method the skills follow |
-| [`RELEASE_NOTES_v0.2.0.md`](RELEASE_NOTES_v0.2.0.md) · [`CHANGELOG.md`](CHANGELOG.md) | What is in this release |
+| [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md) · [`CHANGELOG.md`](CHANGELOG.md) | What is in this release |
 
 ## На русском
 
@@ -138,10 +144,10 @@ It works only on the material you give it. See [`docs/WHAT_IT_DOES_NOT_DO.md`](d
 
 Главное правило: **нет доказательства — нет утверждения**. Плагин не выдумывает факты, цифры и цитаты. Отсутствие доказательства в материалах он не выдаёт за отсутствие практики в компании.
 
-Установка — две команды из раздела [Install](#install). Затем положите материалы в папку или вставьте их в чат и напишите: «Проведи полный аудит HR-бренда, материалы лежат в папке materials/». В чате придёт короткая сводка, а в папке появится HTML-отчёт с разделом «Как читать этот отчёт», планом действий и списком вопросов к компании. Отчёт и все метки будут на русском, его можно сохранить в PDF.
+Установка — две команды из раздела [Install](#install). Дальше достаточно написать: «Проаудируй HR-бренд компании <название>». Плагин сам найдёт карьерный сайт, вакансии и истории сотрудников, сохранит их и проведёт аудит. Свои черновики можно положить в папку и написать: «Проведи полный аудит HR-бренда, материалы лежат в папке materials/». В чате придёт короткая сводка, а в папке появится HTML-отчёт с разделом «Как читать этот отчёт», планом действий и списком вопросов к компании. Отчёт и все метки будут на русском, его можно сохранить в PDF.
 
 ## Status and licence
 
-**v0.2.0.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
+**v0.3.0.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
 
 Licensed under the [MIT License](LICENSE).

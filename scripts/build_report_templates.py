@@ -49,6 +49,9 @@ I18N = {
         "app_ledger": "Обещания и доказательства",
         "app_details": "Оценка по критериям",
         "app_materials": "Изученные материалы",
+        "app_sources": "Источники",
+        "src_cols": ["Страница", "Тип", "Дата", "Ссылка"],
+        "open": "открыть",
         "summary_points": "Главное",
         "summary_actions": "Что сделать в первую очередь",
         "band": {
@@ -166,6 +169,9 @@ I18N = {
         "app_ledger": "Claims and proof",
         "app_details": "Score by criterion",
         "app_materials": "Materials reviewed",
+        "app_sources": "Sources",
+        "src_cols": ["Page", "Type", "Captured", "Link"],
+        "open": "open",
         "summary_points": "Key findings",
         "summary_actions": "What to do first",
         "band": {
@@ -489,6 +495,10 @@ function render(d) {
   if (det.length) {
     app2 += `<h3>${esc(T.app_details)}</h3><div class="tblwrap"><table><tr>${T.det_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${det.map(([id, c]) => `<tr>
       <td>${esc((T.dims[id] || [id])[0])}</td><td>${esc(c.name)}</td><td>${c.assessable === false ? esc(T.not_assessable) : `${esc(c.score)}/${esc(c.max)}`}</td><td>${txt(c.note)}</td></tr>`).join('')}</table></div>`;
+  }
+  const safeUrl = u => /^https?:\/\//i.test(String(u || '')) ? esc(u) : '';
+  if ((d.sources || []).length) {
+    app2 += `<h3>${esc(T.app_sources)}</h3><div class="tblwrap"><table><tr>${T.src_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.sources.map(s => `<tr><td>${esc(s.title)}</td><td>${esc(s.type)}</td><td>${esc(s.captured)}</td><td>${safeUrl(s.url) ? `<a href="${safeUrl(s.url)}" target="_blank" rel="noopener noreferrer">${esc(T.open)}</a>` : ''}</td></tr>`).join('')}</table></div>`;
   }
   if ((d.materials || []).length) {
     app2 += `<h3>${esc(T.app_materials)}</h3><div class="tblwrap"><table><tr>${T.mat_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.materials.map(m => `<tr><td>${esc(m.name)}</td><td>${esc(m.type)}</td></tr>`).join('')}</table></div>`;

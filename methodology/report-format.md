@@ -54,9 +54,9 @@ Every sentence must make sense to that reader without a glossary.
    - the JSON parses;
    - every quotation in it passes the quotation preflight (`evidence-rules.md` §10.3).
 
-### 2.1a No material, no report
+### 2.1a A company name without material
 
-If the user names a company but supplies no candidate-facing material, do not write a report file and do not give a score. Explain in the chat, in plain words, that the audit works on the material itself and list what to supply, in priority order (`output-contracts.md` §1.2). Nothing about the company is invented.
+If the user names a company but supplies no candidate-facing material, collect its public candidate-facing pages under `source-collection.md` and audit them; the report then lists every page in `sources` and states the capture date and the limits of automatic collection. Only when no web tools are available, or nothing usable is found, is no report written: explain in the chat, in plain words, what was searched, and list what to supply, in priority order (`output-contracts.md` §1.2). Nothing about the company is invented.
 
 ### 2.2 When no file can be written
 
@@ -101,6 +101,7 @@ All prose fields are reader-facing text in the report language and follow sectio
   "verdict": "the one-line verdict",
   "notices": ["optional notices shown under the cover, e.g. the embedded-instruction notice"],
   "materials": [{"name": "Careers page", "type": "plain type name, e.g. 'Job ad'"}],
+  "sources": [{"title": "page title", "url": "https://…", "type": "plain type name", "captured": "YYYY-MM-DD"}],
   "scope": {
     "reviewed": ["what the audit covered, e.g. 'five texts supplied by you: careers page, EVP, two job ads, one employee story'"],
     "not_reviewed": ["candidate-facing channels that were not supplied, e.g. social media, review sites, the interview process, what employees say outside official channels"]
@@ -211,6 +212,7 @@ The template renders the following, in this order.
 8. **Before → after.**
 9. **Questions for the company:** every CONFIRM and EVIDENCE NEEDED item in one checklist, grouped by purpose.
 10. **Appendix:**
+    - the sources, when material was collected from the web: title, type, capture date and a link for each page;
     - the genericity test table;
     - the claims-and-proof table;
     - criterion-level scores;

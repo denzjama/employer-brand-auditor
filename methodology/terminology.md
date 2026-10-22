@@ -9,7 +9,7 @@ Canonical labels (verdicts, statuses, severities, red-flag codes, evidence class
 ## 1. Core objects
 
 **Employer brand**
-The set of perceptions a candidate or employee forms about what it is like to work for an organisation, and why they would or would not choose it. The auditor never sees the employer brand itself; it sees *employer-brand communication*: the supplied materials. Every conclusion is about the supplied materials unless explicitly labelled INFERENCE.
+The set of perceptions a candidate or employee forms about what it is like to work for an organisation, and why they would or would not choose it. The auditor never sees the employer brand itself; it sees *employer-brand communication*: the supplied materials, either provided by the user or collected by the auditor from the employer's public pages (`source-collection.md`). Every conclusion is about the supplied materials unless explicitly labelled INFERENCE.
 
 **Employer-brand material / touchpoint**
 Any supplied artefact a candidate could encounter or that defines what candidates should encounter: EVP statements, careers-site copy, job advertisements, recruitment campaigns, social recruiting posts, employee stories, candidate emails, interview-process descriptions, internal employer-brand strategy decks, talent-marketing briefs.
@@ -219,7 +219,8 @@ Use these renderings in every reader-facing output. In a Russian conversation us
 | UNSUPPORTED / CONFLICTING | not supported / contradicted by the material | не подтверждено / противоречит материалам |
 | Support strength STRONG / MODERATE / WEAK / NONE | strong / moderate / weak / no support | сильное / среднее / слабое / нет |
 | UNVERIFIED | not independently checked (this does not mean false) | не проверено независимо (это не значит «ложно») |
-| AUDITED MATERIAL / USER-SUPPLIED | your material / stated in the conversation | ваши материалы / из разговора |
+| AUDITED MATERIAL / USER-SUPPLIED | your material (or: the public pages reviewed) / stated in the conversation | ваши материалы (или: изученные публичные страницы) / из разговора |
+| Collected material, source pack | public sources, saved sources | открытые источники, сохранённые источники |
 | CONFIRM | confirm | уточнить |
 | EVIDENCE NEEDED | information needed | нужны данные |
 | PARAPHRASE | paraphrase (no quotation marks) | пересказ (без кавычек) |

@@ -54,6 +54,10 @@ Coverage is the share of the method's 34 criteria that your material allowed the
 - **Below 40% coverage there is no score.** The report says which materials would make a full audit possible.
 - **Reliability is about how complete the material is.** It does not mean the facts in it were checked. The auditor judges how convincing your material is to a candidate; it does not verify your claims.
 
+### Where the material came from
+
+If you supplied the material, the audit covers exactly that. If you named a company, the auditor collected the company's own public candidate-facing pages on the date shown, saved them in a `sources-…` folder, and lists every page with its link in the report's appendix. "Not found in public sources" means the search did not find that kind of page; it does not mean the company has none.
+
 ### What the audit covered
 
 Under the cover, the report lists what was reviewed and what was not: for example social media, review sites, the interview process, or what employees say outside official channels. Conclusions apply only to what was reviewed.

@@ -66,6 +66,6 @@ For one asset, it is usually better to ask for the narrower task directly: "Is t
 
 ## What not to expect on a first run
 
-- **It will not look anything up.** It does not browse your website or know your company in advance. See [`WHAT_IT_DOES_NOT_DO.md`](WHAT_IT_DOES_NOT_DO.md).
+- **It does not know your company in advance.** It uses only the material you give it or the public pages it finds and lists in the report, never what a model may remember about a company. See [`WHAT_IT_DOES_NOT_DO.md`](WHAT_IT_DOES_NOT_DO.md).
 - **It will not compare you with competitors or the market** unless you supply comparable material.
 - **Repeated runs will not give identical scores.** Scores are structured expert judgements; repeated runs on the same material are usually close, but not identical.

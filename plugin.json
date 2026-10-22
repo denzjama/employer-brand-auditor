@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "employer-brand-auditor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Evidence-first audits for employer brands, EVP, careers content, job ads, and talent marketing. Identifies generic claims, missing proof, weak differentiation, candidate relevance gaps, and the highest-priority fixes.",
   "author": {
     "name": "Denis Zamaletdinov"

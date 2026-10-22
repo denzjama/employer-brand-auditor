@@ -59,7 +59,7 @@ For Options A and C, list your installed plugins:
 claude plugin list
 ```
 
-Expected: `employer-brand-auditor@employer-brand-auditor`, version 0.2.0, status enabled.
+Expected: `employer-brand-auditor@employer-brand-auditor`, version 0.3.0, status enabled.
 
 Show what the plugin contains:
 

@@ -2,7 +2,21 @@
 
 These prompts are ready to copy. Paste your material **underneath** the prompt, or attach it as a file. Each task has a short version and a more detailed one. You can write in any language; the auditor answers in the language you use.
 
-The auditor works only on the material you supply. Nothing in these prompts adds information about your company; the more relevant material you supply, the more it can assess.
+The auditor works on the material you supply, or, when you only name a company, on the public pages it finds and lists in the report. Nothing in these prompts adds information about your company.
+
+## Audit a company by name
+
+**Short**
+```text
+Audit the employer brand of <company name>.
+```
+
+**Detailed**
+```text
+Audit the employer brand of <company name>, the <industry> company in <country or city>. Focus on how it hires <role families>. Find its careers site, current job ads, employee stories and hiring process yourself.
+```
+
+In Russian: `Проаудируй HR-бренд компании <название>.` The auditor saves what it found as a source pack in your folder and lists every page in the report.
 
 ---
 

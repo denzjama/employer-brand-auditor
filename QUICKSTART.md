@@ -16,15 +16,23 @@ claude plugin install employer-brand-auditor@employer-brand-auditor
 
 Then start a new Claude Code session. To load the plugin from a local folder instead, or to update and remove it, see [`docs/INSTALL.md`](docs/INSTALL.md).
 
-## 2. Give it employer-brand materials
+## 2. Name the company, or give it materials
 
-Collect **3–5 candidate-facing materials** as text:
+The simplest start needs no files:
+
+```text
+Audit the employer brand of <company name>.
+```
+
+The auditor finds the company's public careers site, current job ads, employee stories and hiring-process pages, saves them as a source pack in your folder, and audits them. Claude Code asks your permission before it opens web pages.
+
+To audit material that is not public, such as a new EVP or draft job ads, collect **3–5 candidate-facing materials** as text:
 - your careers page;
 - your EVP or employer proposition;
 - one or two job ads;
 - an employee story.
 
-Paste them into the chat, attach them as files, or put them in a folder and name the folder in your request. The auditor does not browse the web, so it sees only what you give it.
+Paste them into the chat, attach them as files, or put them in a folder and name the folder in your request. When you supply material, the auditor works on exactly that material.
 
 ## 3. Ask for an audit
 

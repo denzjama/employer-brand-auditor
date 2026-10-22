@@ -2,7 +2,7 @@
 
 This file is for maintainers and contributors. Claude Code does not load it. User documentation lives in `README.md`, `QUICKSTART.md` and `docs/`.
 
-**Current version: v0.2.0** (report and readability release). v0.2.0 changes how results are presented: the full audit is delivered as an HTML report built from shipped templates, with plain-language labels in the conversation's language and reader-facing writing rules. Scoring, evidence grading, genericity testing and rewrite fidelity are unchanged from v0.1.4. Earlier behaviour snapshots: `evals/results/v0.1.4/pilot-candidate/snapshot.json` (frozen pilot behaviour) and `evals/results/v0.1.5/metadata-release/snapshot.json` (metadata-only revision). Any change to `methodology/`, `skills/`, `templates/` or the manifests needs a new version, updated evals and a passing validator (see `.claude/CLAUDE.md`).
+**Current version: v0.3.0.** v0.3.0 adds auditing a company by name: the auditor collects the employer's public candidate-facing pages under `methodology/source-collection.md`, saves them as a source pack and audits it. v0.2.0 was the report and readability release. v0.2.0 changes how results are presented: the full audit is delivered as an HTML report built from shipped templates, with plain-language labels in the conversation's language and reader-facing writing rules. Scoring, evidence grading, genericity testing and rewrite fidelity are unchanged from v0.1.4. Earlier behaviour snapshots: `evals/results/v0.1.4/pilot-candidate/snapshot.json` (frozen pilot behaviour) and `evals/results/v0.1.5/metadata-release/snapshot.json` (metadata-only revision). Any change to `methodology/`, `skills/`, `templates/` or the manifests needs a new version, updated evals and a passing validator (see `.claude/CLAUDE.md`).
 
 ---
 
@@ -26,12 +26,13 @@ employer-brand-auditor/
     output-contracts.md        # output structures, tone, Russian headings
     terminology.md             # canonical vocabulary and reader-facing wording (RU/EN)
     report-format.md           # how a full audit is delivered: HTML report, data format, chat summary, writing rules
+    source-collection.md       # auditing a company by name: finding, fetching and saving its public pages
   templates/
     audit-report.ru.html       # generated report template (Russian)
     audit-report.en.html       # generated report template (English)
   evals/
     README.md                  # how to run evals, acceptance criteria
-    test-cases.md              # 103 behavioural cases (original, calibration, safety-regression and v0.2.0 report cases)
+    test-cases.md              # 108 behavioural cases (original, calibration, safety-regression and v0.2.0 report cases)
     fixtures/                  # 7 synthetic employer material sets
     results/                   # behaviour snapshots (SHA256 of the frozen files)
   scripts/
@@ -75,7 +76,7 @@ Expected broad results (details and grading notes in `evals/test-cases.md`):
 | `contradictory-employer.md` | Consistency conflicts surfaced (autonomy vs. approvals, experimentation vs. rigid release process, remote-first vs. office-based) |
 | `malicious-input.md` | Embedded instructions reported and ignored; score computed normally; response not in French |
 
-The full 103-case suite, acceptance criteria and the eval runner (`evals/run_evals.py`) are in `evals/`. Raw eval transcripts, calibration reports and the real-world pilot material are kept privately by the maintainer and are not part of this repository, because they contain local environment data and real employers' content.
+The full 108-case suite, acceptance criteria and the eval runner (`evals/run_evals.py`) are in `evals/`. Raw eval transcripts, calibration reports and the real-world pilot material are kept privately by the maintainer and are not part of this repository, because they contain local environment data and real employers' content.
 
 ---
 
@@ -114,12 +115,11 @@ The script holds the CSS, the renderer, the Russian and English labels for every
 
 Planned, not yet built:
 
-- **MCP-backed URL analysis** — fetch careers pages and job ads directly, with source capture so every quote remains traceable.
 - **Benchmark retrieval** — compare against a curated, sourced reference set instead of model judgement alone, with sources cited in output.
 - **Saved audits** — persist audits so re-audits can show what changed and track fixes over time.
 - **Structured employer comparison** — side-by-side audits of two or more employers from comparable, supplied or retrieved material, with like-for-like touchpoint matching.
 
-None of these exist in v0.2.0.
+None of these exist in v0.3.0.
 
 
 ---

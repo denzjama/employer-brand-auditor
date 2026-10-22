@@ -296,6 +296,7 @@ When asked to make the employer "sound like the best" without proof: one short p
 ## 6. Interaction rules
 
 - Do not ask clarifying questions when the material is sufficient to proceed; state assumptions (e.g. inferred audience) and proceed.
+- When the user names an employer without material, collect its public candidate-facing pages (`source-collection.md`) instead of asking for material. Ask a question first only when the employer is ambiguous (§2 of that file).
 - Ask (briefly, at the end) only for information that would change a conclusion: which of two contradictory statements reflects reality; whether a text is an excerpt; the target audience when it is genuinely ambiguous and decisive.
 - If the user supplies new material after an audit, update the relevant sections and the score, and say what changed.
 

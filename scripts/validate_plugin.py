@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 PLUGIN_NAME = "employer-brand-auditor"
-PLUGIN_VERSION = "0.2.0"
+PLUGIN_VERSION = "0.3.0"
 
 EXPECTED_SKILLS = ("employer-brand-audit", "evp-stress-test", "career-content-review")
 
@@ -33,6 +33,7 @@ REQUIRED_FILES = (
     "methodology/output-contracts.md",
     "methodology/terminology.md",
     "methodology/report-format.md",
+    "methodology/source-collection.md",
     "templates/audit-report.ru.html",
     "templates/audit-report.en.html",
     "evals/README.md",
@@ -151,7 +152,7 @@ EXPECTED_DIMENSIONS = {
 }
 EXPECTED_SUBCRITERIA_COUNT = 34
 
-EVAL_CASE_COUNT = 103
+EVAL_CASE_COUNT = 108
 
 # Synthetic names used in evaluation fixtures and targeted cases. They must never appear in
 # methodology or skills: examples there must be neutral so evals test generalisation.

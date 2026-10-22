@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.3.0
+
+- **Audit a company by name.** "Audit the employer brand of <company>" with no files: the auditor finds the company's public careers site, current job ads, employee stories and hiring-process pages, saves them as a source pack and audits them.
+- **Every source is listed** in the report with its link and capture date; types not found are left out of the score and named in the audit scope.
+- **Links work in the other skills:** an EVP or a job ad can be given as a link.
+- **Unchanged:** evidence comes only from fetched page text, never from memory, news or review sites; scoring and the report are the same as in v0.2.0.
+- **Evals:** TC-102 rewritten; new cases TC-104 – TC-108.
+
 ## v0.2.0
 
 - **HTML report.** A full audit is delivered as a ready-to-share HTML report (built from templates shipped with the plugin) plus a short chat summary. The report can be saved as a PDF.
