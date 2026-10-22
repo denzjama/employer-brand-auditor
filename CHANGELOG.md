@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.2.0
+
+- **HTML report.** A full audit is delivered as a ready-to-share HTML report (built from templates shipped with the plugin) plus a short chat summary. The report can be saved as a PDF.
+- **Built-in methodology explanation.** Every report includes "How to read this report": score scale and weights, coverage, score reliability, the eight dimensions, the genericity test and the labels.
+- **Executive summary, audit scope and an actionable plan** (effort, who to involve, what to watch) in every report.
+- **Labels in the conversation's language.** Russian conversations get Russian labels; internal codes no longer appear in reader-facing text.
+- **Plain-language writing rules** for all reader-facing text.
+- **Red flags folded into the main problems;** all confirmation and missing-information items collected into one checklist.
+- **Unchanged:** scoring, evidence grading, genericity test, red-flag definitions and rewrite safeguards.
+- **Evals:** six new cases (TC-98 – TC-103); TC-02 updated for Russian labels.
+
 ## v0.1.5 — Release Candidate
 
 - **Licence:** released under the MIT License (`LICENSE`).

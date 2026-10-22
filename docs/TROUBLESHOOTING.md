@@ -23,19 +23,19 @@
 
 ## Too little material
 
-- **Symptom:** many items are NOT ASSESSABLE, coverage is low, or the audit recommends a narrower task.
+- **Symptom:** many items are "not assessed", coverage is low, or the audit recommends a narrower task.
 - **Why it happens:** some parts of the method need several touchpoints. Consistency, for example, cannot be judged from one page. Items the material cannot show are excluded rather than scored as zero.
 - **What to do:** add materials of different types: careers page, EVP, 1–2 job ads, an employee story. For a single asset, ask for an EVP stress test or a content review instead. See [`FIRST_RUN.md`](FIRST_RUN.md).
 
-## The output has LOW confidence
+## Score reliability is low
 
-- **Symptom:** confidence is LOW and the score is marked PROVISIONAL.
-- **Why it happens:** coverage is below 60%: the material did not allow most of the method to be assessed. Confidence is MEDIUM rather than HIGH when fewer than three types of material were supplied.
-- **What to do:** read the score as indicative only. Add more types of material for a firmer result. LOW confidence is about the material, not a verdict on your employer brand.
+- **Symptom:** score reliability is low and the score is marked provisional.
+- **Why it happens:** coverage is below 60%: the material did not allow most of the method to be assessed. Reliability is medium rather than high when fewer than three types of material were supplied.
+- **What to do:** read the score as indicative only. Add more types of material for a firmer result. Low reliability is about the material, not a verdict on your employer brand.
 
 ## The headline score is missing
 
-- **Symptom:** the audit says SCORE WITHHELD.
+- **Symptom:** the audit says the score is withheld.
 - **Why it happens:** coverage is below 40%. A headline score from so little material would be misleading, so the auditor withholds it, explains why and lists the materials it would need.
 - **What to do:** supply more material, or use the narrower task it suggests (usually an EVP stress test or a content review).
 
@@ -61,11 +61,29 @@
 
 ## You expected the auditor to know the company
 
-- **Symptom:** the audit ignores things you know are true about your company, or marks them EVIDENCE NEEDED.
+- **Symptom:** the audit ignores things you know are true about your company, or marks them "Information needed".
 - **Why it happens:** by design, the audit uses only the supplied material, so it reflects what a candidate reading that material can see. A missing item is marked as missing evidence; it is not taken as proof that the practice is absent.
 - **What to do:**
   - Add the material where that information appears.
   - Or state the fact in chat. It is then treated as user-supplied: usable, labelled, in recommendations and rewrites, but it does not raise the score of the material.
+
+## No report file was created
+
+- **Symptom:** you got the audit in the chat, but no HTML file appeared.
+- **Why it happens:** the environment did not allow writing files (for example, file writing was denied), or you asked for the audit in the chat.
+- **What to do:** allow the file write when Claude Code asks, or ask again: "Write the audit as an HTML report."
+
+## The report says its data could not be read
+
+- **Symptom:** the HTML file opens but shows a message that the report data could not be read.
+- **Why it happens:** the audit data inside the file was written incorrectly.
+- **What to do:** ask in the same conversation: "Rebuild the HTML report." The audit itself does not need to be redone.
+
+## The report is in the wrong language
+
+- **Symptom:** you wrote in one language and got the report in another.
+- **Why it happens:** the report follows the language of the conversation. A mixed conversation can be read either way.
+- **What to do:** say which language you want: "Make the report in Russian" or "in English".
 
 ## Scores differ slightly between runs
 

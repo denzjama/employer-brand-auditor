@@ -2,7 +2,7 @@
 
 ## The three steps
 
-**Step 1 — Give the auditor 3–5 employer-brand materials.** Paste their text or attach them as files.
+**Step 1 — Give the auditor 3–5 employer-brand materials.** Paste their text, attach them as files, or put them in a folder and name it in your request ("the materials are in materials/").
 
 **Step 2 — Ask:**
 
@@ -16,16 +16,23 @@ or, in Russian:
 Проведи полный аудит бренда работодателя по этим материалам.
 ```
 
-**Step 3 — Receive the audit.** It contains:
-- the Employer Brand Score (0–100), with **Coverage** and **Confidence**;
-- a scorecard across eight dimensions (clarity, differentiation, proof, audience fit, employee truth, consistency, candidate relevance, conversion);
-- what's working, and the biggest problems by severity;
-- a Genericity Test of your core claims;
-- a Claim → Proof ledger;
-- red flags;
-- Top 3 fixes;
+**Step 3 — Receive the audit.**
+
+In the chat you get a short summary: the score and what it means, the main conclusion, three to five key findings, the first three actions, and the path to the report file.
+
+The **HTML report** in your working folder contains:
+- the score (0–100) with **coverage** and **score reliability**, each explained;
+- an executive summary for a manager;
+- "How to read this report": the scale, the eight dimensions and the labels in plain words;
+- what the audit covered and what it did not;
+- a score for each of the eight dimensions, with the reason;
+- what works, and the main problems by priority, with quotations from your material;
+- a plan of three fixes, each with effort, who to involve and what to watch afterwards;
 - before → after rewrites where useful;
-- missing evidence.
+- one checklist of questions for the company;
+- an appendix with the genericity test, the claims-and-proof table and criterion-level scores.
+
+It opens in any browser and saves as a PDF with the button in the corner. The report and its labels are in the language of your conversation.
 
 How to read each part: [`HOW_TO_READ_AN_AUDIT.md`](HOW_TO_READ_AN_AUDIT.md).
 
@@ -41,7 +48,7 @@ The audit is most useful when the material covers more than one part of the cand
 | An employee story or testimonial | Shows whether employee voice supports the promise |
 | A recruitment campaign or social post (optional) | Adds another touchpoint for the consistency check |
 
-With **three or more different types** of material and enough content, the audit can reach **HIGH** confidence.
+With **three or more different types** of material and enough content, score reliability can be **high**.
 
 Tips:
 - Paste text as it appears to candidates. Don't clean it up or summarise it first.
@@ -51,9 +58,9 @@ Tips:
 ## Minimum input
 
 The auditor can work with **a single material**, such as one EVP line or one job ad. The less material it gets, the more of the method it cannot assess:
-- **Coverage drops.** Items the material cannot show are marked NOT ASSESSABLE. They are never scored as zero.
-- **Below 60% coverage,** confidence is LOW and the score is marked **PROVISIONAL**.
-- **Below 40% coverage,** no headline score is given (SCORE WITHHELD). The auditor explains which materials would make a full audit possible.
+- **Coverage drops.** Items the material cannot show are marked "not assessed". They are never scored as zero.
+- **Below 60% coverage,** score reliability is low and the score is marked **provisional**.
+- **Below 40% coverage,** no score is given. The auditor explains which materials would make a full audit possible.
 
 For one asset, it is usually better to ask for the narrower task directly: "Is this a strong EVP?" or "Review this job ad". Those use the EVP stress test or the content review. See [`EXAMPLE_PROMPTS.md`](EXAMPLE_PROMPTS.md).
 

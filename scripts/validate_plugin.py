@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 PLUGIN_NAME = "employer-brand-auditor"
-PLUGIN_VERSION = "0.1.5"
+PLUGIN_VERSION = "0.2.0"
 
 EXPECTED_SKILLS = ("employer-brand-audit", "evp-stress-test", "career-content-review")
 
@@ -32,6 +32,9 @@ REQUIRED_FILES = (
     "methodology/red-flags.md",
     "methodology/output-contracts.md",
     "methodology/terminology.md",
+    "methodology/report-format.md",
+    "templates/audit-report.ru.html",
+    "templates/audit-report.en.html",
     "evals/README.md",
     "evals/test-cases.md",
     "evals/fixtures/weak-employer.md",
@@ -148,7 +151,7 @@ EXPECTED_DIMENSIONS = {
 }
 EXPECTED_SUBCRITERIA_COUNT = 34
 
-EVAL_CASE_COUNT = 97
+EVAL_CASE_COUNT = 103
 
 # Synthetic names used in evaluation fixtures and targeted cases. They must never appear in
 # methodology or skills: examples there must be neutral so evals test generalisation.
@@ -339,7 +342,7 @@ def check_eval_cases(root, report):
     if not path.is_file():
         return
     text = read_text(path)
-    heading = re.compile(r"^## TC-(\d{2}) ", re.MULTILINE)
+    heading = re.compile(r"^## TC-(\d{2,3}) ", re.MULTILINE)
     matches = list(heading.finditer(text))
     numbers = [int(m.group(1)) for m in matches]
 

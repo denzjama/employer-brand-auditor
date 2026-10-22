@@ -26,7 +26,7 @@ Global fail conditions apply to every case: fabricated employer facts, fabricate
 - **Prompt:** "Разнеси наш HR-бренд."
 - **Material:** `evals/fixtures/weak-employer.md`
 - **Expected skill:** employer-brand-audit
-- **Expected behaviour:** Entire response in Russian, with canonical labels (GENERIC, UNSUPPORTED, RF codes, severities) in English. Direct, rigorous criticism without insults or theatrics. Score below 45, confidence HIGH (five touchpoint types, user states this is everything). Identifies adjective soup, perk dumping, unsupported superlatives ("#1 in our industry", "best place to work"), vague development promise, audience blur, jargon in the job ad, and token employee voice. Notes that the materials are consistent with each other only in being generic (dependency cap on CO1).
+- **Expected behaviour:** Entire response in Russian, labels included (v0.2.0: «шаблонное», «не подтверждено», «высокая важность»; no English capital labels, RF numbers or sub-criterion codes in reader-facing text). Delivered as a Russian HTML report plus a short chat summary (`report-format.md` §2). Direct, rigorous criticism without insults or theatrics. Score below 45, confidence HIGH (five touchpoint types, user states this is everything). Identifies adjective soup, perk dumping, unsupported superlatives ("#1 in our industry", "best place to work"), vague development promise, audience blur, jargon in the job ad, and token employee voice. Notes that the materials are consistent with each other only in being generic (dependency cap on CO1).
 - **Fail if:** Response in English; insulting or mocking tone; praise padding.
 
 ## TC-03 — Is this a strong EVP?
@@ -839,6 +839,61 @@ Added with the freeze-4 patch. They test source-grounded rationale (no invented 
 - **Expected behaviour:** Every span in quotation marks is the source's exact wording, ideally complete sentences. Shortened or reworded evidence ("the 2023 average was 7.1 years", "rest room with hot food") appears without quotation marks, keeping 2023, bus drivers and the Mardale depot. The tenure figure is not treated as current practice without continuity evidence.
 - **Fail if:** any non-verbatim span inside quotation marks presented as the source's words; the depot scope or the year dropped.
 
+## TC-98 — HTML report delivery (Russian)
+
+- **Prompt:** "Используй плагин employer brand auditor, проанализируй HR-бренд нашей компании. Все материалы в папке materials/."
+- **Material:** the five files of `evals/fixtures/average-employer.md`, one file per touchpoint, in `materials/` of the working directory
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** A file `hr-brand-audit-<slug>-<date>.html` is written from `templates/audit-report.ru.html`. Only the data placeholder is replaced, and the data is valid JSON with `lang: "ru"`. The report opens with the cover, the executive summary and the template's fixed "Как читать этот отчёт" section. Every coded field uses the codes in `report-format.md` §3.1. The chat reply is the short summary from §2.3: score with its reading band, coverage, reliability, verdict, 3–5 findings, three actions, the file path. Scores stay within the fixture's calibrated band.
+- **Fail if:** no file written; template structure altered beyond the placeholder; invalid JSON; the full scorecard, ledger or genericity table repeated in the chat; score outside the fixture band.
+
+## TC-99 — English conversation gets an English report
+
+- **Prompt:** "Use the employer brand auditor to audit our employer brand. The materials are in materials/."
+- **Material:** the five touchpoints of `evals/fixtures/strong-employer.md` as files in `materials/`
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** English template, `lang: "en"`, all prose and labels in English, chat summary in English.
+- **Fail if:** Russian template or Russian labels; labels left as canonical capitals in prose.
+
+## TC-100 — Reader-facing vocabulary and voice
+
+- **Prompt:** "Проведи полный аудит бренда работодателя по этим материалам." followed by `evals/fixtures/hygiene-heavy-employer.md`
+- **Material:** `evals/fixtures/hygiene-heavy-employer.md`
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** No prose field and no chat text contains internal codes:
+  - sub-criterion codes (CL1, PR1…);
+  - RF numbers;
+  - T1–T8;
+  - Q1–Q6;
+  - `RELATIONSHIP: UNRESOLVED`;
+  - English status capitals such as SUPPORTED, UNVERIFIED, GENERIC, HIGH, CONFIRM, EVIDENCE NEEDED.
+
+  Dimensions use the reader-facing names, for example «Голос сотрудников и реальность работы». There is no first person and no gendered self-reference («я оценивал»). Every unresolved mapping is stated in plain words and listed in `questions` as `confirm`.
+- **Fail if:** any internal code or English capital label in reader-facing text; first-person narration of the method.
+
+## TC-101 — Audit in the chat when asked (fallback)
+
+- **Prompt:** "Не надо файлов, дай аудит прямо здесь в чате." followed by `evals/fixtures/contradictory-employer.md`
+- **Material:** `evals/fixtures/contradictory-employer.md`
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** No file is written. The full audit is given in the chat in the reader-facing structure of `report-format.md` §5, in Russian, with plain labels. Red flags are folded into the main problems, and all questions to the company are collected in one list. The consistency conflicts are still surfaced.
+- **Fail if:** a file is written; JSON printed in the chat; a separate red-flag section that repeats the problems; internal codes.
+
+## TC-102 — Company name only, no material
+
+- **Prompt:** "Используй плагин employer brand auditor, проанализируй компанию «Северный Лён» — это сеть химчисток. Насколько сильный у них HR-бренд?"
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** No score and no report file. The reply explains in plain words that the audit works on candidate-facing material and lists what to supply, in priority order. It invents nothing about the company. It may offer to look for public material if the environment allows it, without presenting anything found as already audited.
+- **Fail if:** a score or report produced without material; invented facts about the company.
+
+## TC-103 — EVP stress test labels in Russian
+
+- **Prompt:** "Это сильное EVP? «Расти вместе с нами и меняй мир к лучшему»"
+- **Expected skill:** evp-stress-test
+- **Expected behaviour:** The verdict is given in Russian («пока не EVP» or «слабое» per `terminology.md` §8). Attack results are in plain Russian (выдерживает / частично / не выдерживает). No RF numbers or English capital labels appear in reader-facing text. The reasoning is plain and free of internal codes.
+- **Fail if:** English verdict capitals; RF numbers; codes.
+
 ---
 
 ## Fixture calibration notes
@@ -860,6 +915,8 @@ Reference arithmetic check for `strong-employer.md` (illustrative, one reasonabl
 ---
 
 ## Change log
+
+- **v0.2.0** — Report and readability release. Added TC-98 – TC-103: HTML report delivery from the shipped template (Russian and English), reader-facing vocabulary and voice, chat fallback, company name without material, Russian EVP labels. TC-02 now expects Russian labels, in line with the language rule in `terminology.md` §7. No scoring rule, fixture or expected score band changed.
 
 - **v0.1.4 (freeze 4)** — Added TC-92 – TC-97: source-grounded rationale (reader-reaction, "readers will wonder", "often comes across as", rarity) and the quotation preflight. No existing case, fixture or band changed.
 - **v0.1.4 (freeze 3)** — Added TC-82 – TC-91: relevance judgement vs population claim; hypothetical candidate questions; temporal alignment (historical claim supported; current practice not established); unknown role history; person or team scope; unsupported "most people"; exact count over a supplied set. Clarified the TC-13 and TC-32 expectations for the temporal-alignment rule: STRONG for what last year's figure measures; WEAK for current practice without continuity. No case removed; no fixture or band changed.

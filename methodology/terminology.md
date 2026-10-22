@@ -2,7 +2,7 @@
 
 Canonical vocabulary for Employer Brand Auditor. Every skill and methodology file uses these terms with these meanings. If a term is used differently anywhere else in the project, this file wins and the other file must be corrected.
 
-Canonical labels (verdicts, statuses, severities, red-flag codes, evidence classes) are always written in English capitals, in every output language, so that results stay comparable across languages and portable across platforms. Everything around them is written in the user's language.
+Canonical labels (verdicts, statuses, severities, red-flag codes, evidence classes) are written in English capitals in the methodology and in report data, so that results stay comparable across languages and portable across platforms. They are internal identifiers. **The reader always sees them in the language of the conversation**, using the reader-facing wording in section 7 (Russian) or its English equivalent, and never sees internal codes such as RF numbers, sub-criterion codes or T1–T8 (`report-format.md` §1.2, §6.1).
 
 ---
 
@@ -189,35 +189,51 @@ Do not inflate severity. A brand with no CRITICAL issues should not be given one
 
 ---
 
-## 7. Russian output glossary
+## 7. Reader-facing wording (Russian and English)
 
-Use these renderings when responding in Russian so that terminology stays consistent. Canonical capital labels stay in English; a Russian gloss may follow in parentheses on first use.
+Use these renderings in every reader-facing output. In a Russian conversation use the Russian column, in an English conversation the English column. The canonical label never appears next to the rendering.
 
-| English | Russian |
-|---|---|
-| Employer brand | HR-бренд / бренд работодателя |
-| Employer-brand audit | Аудит HR-бренда |
-| EVP | EVP / ценностное предложение работодателя |
-| Candidate | Кандидат |
-| Claim | Заявление / обещание |
-| Proof / evidence | Доказательство / подтверждение |
-| Claim → proof ledger | Реестр «обещание → доказательство» |
-| Genericity Test | Тест на шаблонность |
-| Coverage | Покрытие |
-| Confidence | Уверенность |
-| Score withheld | Оценка не выставляется |
-| Work reality | Реальность работы |
-| Employee voice | Голос сотрудников |
-| Red flag | Красный флаг |
-| Trade-off | Компромисс / осознанный выбор |
-| Missing evidence | Недостающие доказательства |
-| EVIDENCE NEEDED | EVIDENCE NEEDED (нужны данные: …) |
-| Core claim / Supporting claim / Hygiene fact | Ключевое обещание / Поддерживающее обещание / Базовое условие |
-| STRONGLY / PARTIALLY / WEAKLY SUPPORTED, UNSUPPORTED | Статусы остаются на английском; можно пояснить: «хорошо / частично / слабо подтверждено», «не подтверждено материалами» |
-| Support vs verification | Подкреплённость в коммуникации vs независимая проверка |
-| UNVERIFIED | UNVERIFIED (не проверено независимо — это не значит «ложно») |
-| PARAPHRASE | PARAPHRASE (пересказ, без кавычек) |
-| Observation / Inference / Gap / Recommendation | Наблюдение / Вывод / Пробел / Рекомендация |
+| Canonical | English (reader) | Russian (reader) |
+|---|---|---|
+| Employer brand | employer brand | HR-бренд / бренд работодателя |
+| Employer-brand audit | employer brand audit | аудит HR-бренда |
+| EVP | EVP / employer value proposition | ценностное предложение работодателя (EVP) |
+| Claim | claim / promise | обещание |
+| Proof / evidence | proof | доказательство |
+| Claim → proof ledger | claims and proof | обещания и доказательства |
+| Genericity Test | genericity test | тест на шаблонность |
+| Coverage | coverage | покрытие |
+| Confidence HIGH / MEDIUM / LOW | score reliability: high / medium / low | надёжность оценки: высокая / средняя / низкая |
+| PROVISIONAL | provisional | предварительная |
+| SCORE WITHHELD | score withheld | оценка не выставлена |
+| NOT ASSESSABLE | not assessed | не оценивалось |
+| Severity CRITICAL / HIGH / MEDIUM / LOW | critical / high / medium / low priority | критично / высокая / средняя / низкая важность |
+| DISTINCTIVE / PARTIALLY DIFFERENTIATED / GENERIC | sets you apart / partly sets you apart / generic | отличает вас / частично отличает / шаблонное |
+| Substitution Breaks / Bends / Survives | only true of you / mostly only you / fits anyone | только про вас / почти только про вас / подходит любому |
+| Ubiquity Rare / Common / Ubiquitous | own words / some stock phrases / stock phrases | своими словами / есть штампы / из штампов |
+| Specificity High / Some / None | a lot / some / none of specifics | много / немного / нет конкретики |
+| Defensibility Owned / Supportable / Unowned | yours and proven / could be supported / not anchored | ваше и доказано / можно подкрепить / ничем не закреплено |
+| CORE / SUPPORTING CLAIM | core / supporting claim | главное / второстепенное обещание |
+| HYGIENE FACT | basic condition | базовое условие |
+| STRONGLY / PARTIALLY / WEAKLY SUPPORTED | supported / partly supported / weakly supported | подтверждено / частично подтверждено / слабо подтверждено |
+| UNSUPPORTED / CONFLICTING | not supported / contradicted by the material | не подтверждено / противоречит материалам |
+| Support strength STRONG / MODERATE / WEAK / NONE | strong / moderate / weak / no support | сильное / среднее / слабое / нет |
+| UNVERIFIED | not independently checked (this does not mean false) | не проверено независимо (это не значит «ложно») |
+| AUDITED MATERIAL / USER-SUPPLIED | your material / stated in the conversation | ваши материалы / из разговора |
+| CONFIRM | confirm | уточнить |
+| EVIDENCE NEEDED | information needed | нужны данные |
+| PARAPHRASE | paraphrase (no quotation marks) | пересказ (без кавычек) |
+| RELATIONSHIP: UNRESOLVED | it is unclear whether X and Y are the same / still hold | неясно, относится ли X к Y / действует ли это сейчас |
+| Red flag RFxx | the red flag's plain name | понятное название ошибки (без номера) |
+| EVP verdicts STRONG / PROMISING BUT GENERIC / WEAK / NOT YET AN EVP | strong / promising but generic / weak / not yet an EVP | сильное / перспективное, но шаблонное / слабое / пока не EVP |
+| EVP attack PASS / PARTIAL / FAIL / NOT TESTABLE | holds / partly holds / fails / cannot be tested | выдерживает / частично / не выдерживает / нельзя проверить |
+| Content verdicts EFFECTIVE / FIXABLE / NOT FIT FOR PURPOSE | works / fixable / does not do its job | работает / можно исправить / не решает задачу |
+| Content actions KEEP / FIX / REMOVE / ADD | keep / fix / remove / add | оставить / исправить / убрать / добавить |
+| Decision check ANSWERED / PARTLY / NOT ANSWERED / NOT APPLICABLE | answered / partly / not answered / not applicable | есть ответ / частично / нет ответа / не относится |
+| Touchpoint types T1–T8 | plain type: EVP, careers page, job ad, campaign, employee story, candidate communication, internal strategy, third-party source | ценностное предложение, карьерная страница, вакансия, кампания, история сотрудника, коммуникация с кандидатом, внутренняя стратегия, внешний источник |
+| Dimensions | see `report-format.md` §6.1 | см. `report-format.md` §6.1 |
+| Support vs verification | how convincing the material is vs independent fact-checking | насколько убедительно подкреплено в материалах vs независимая проверка фактов |
+| Observation / Inference / Gap / Recommendation | observation / inference / gap / recommendation | наблюдение / вывод / пробел / рекомендация |
 
 ---
 

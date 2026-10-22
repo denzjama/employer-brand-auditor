@@ -18,6 +18,11 @@ Run a full employer brand audit of the materials below.
 Run a full employer brand audit of the materials below. They are our complete set of current candidate-facing materials: careers page, EVP, two job ads and one employee story. Our priority audiences are field engineers and customer-service staff. Start with the diagnosis, then give the top 3 fixes.
 ```
 
+The full audit is delivered as an HTML report in your working folder, with a short summary in the chat. Variations:
+- materials in a folder: `Run a full employer brand audit. Our candidate-facing materials are in materials/.`
+- no file, everything in the chat: `Run a full employer brand audit of the materials below and give it here in the chat, without a file.`
+- in Russian: `Проведи полный аудит HR-бренда. Материалы для кандидатов лежат в папке materials/.` (the report and its labels will be in Russian)
+
 ## EVP stress test
 
 **Short**
@@ -115,7 +120,7 @@ Now fix the biggest issues without inventing facts.
 
 **Detailed**
 ```text
-Based on the diagnosis above, rewrite the careers page introduction and the first job ad. Use only facts from our materials. Keep every number, scope and condition exactly as written. Put anything you would need from us as EVIDENCE NEEDED or CONFIRM below the copy, not inside it.
+Based on the diagnosis above, rewrite the careers page introduction and the first job ad. Use only facts from our materials. Keep every number, scope and condition exactly as written. List anything you would need from us, or anything we should confirm, below the copy, not inside it.
 ```
 
 ---

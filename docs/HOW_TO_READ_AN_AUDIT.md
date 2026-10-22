@@ -1,90 +1,95 @@
 # How to read an audit
 
-A full audit has a fixed structure. This guide explains each part and the mistakes to avoid when reading it.
+A full audit arrives in two parts:
+- **a short reply in the chat**: the score, the main conclusion, the key findings, the first three actions and the path to the report;
+- **an HTML report file** in your working folder. It opens in any browser, and its "Save as PDF" button turns it into a document you can send.
 
-## The three numbers at the top
+The report explains itself: it has a fixed section, "How to read this report". This guide is the same explanation in more detail.
 
-### Employer Brand Score (0–100)
+The report is written in the language of your conversation: a Russian conversation gets a Russian report with Russian labels, an English conversation an English one.
 
-The score measures how well the supplied material works for candidates, across eight dimensions:
+## The top of the report
 
-| Dimension | Points |
-|---|---|
-| Clarity | 12 |
-| Differentiation | 16 |
-| Proof | 16 |
-| Audience Fit | 12 |
-| Employee Truth | 10 |
-| Consistency | 12 |
-| Candidate Relevance | 12 |
-| Conversion | 10 |
+### The score (0–100)
 
-The audit shows the arithmetic, for example "earned 61 of 100 assessable points → 61/100".
+The score measures how well the material you supplied works for candidates. It is the sum of eight dimensions with different weights:
 
-These bands are reading aids for the method only. They are **not** market benchmarks, percentiles or comparisons with other employers.
+| Dimension | What it checks | Points |
+|---|---|---|
+| Clarity | Whether it is clear at a glance what you offer and why someone would join | 12 |
+| Differentiation | Whether your claims could be moved unchanged into another employer's copy | 16 |
+| Proof | Whether claims are backed by figures, practices and examples in the material | 16 |
+| Audience fit | Whether it is clear who you speak to, and whether different roles' conditions are covered | 12 |
+| Employee voice and work reality | Whether there are real people's stories and a picture of the work, difficulties included | 10 |
+| Consistency | Whether the materials say the same thing without contradicting each other | 12 |
+| Candidate questions answered | Whether the facts needed to decide are there: pay, schedule, tasks, conditions | 12 |
+| Path to applying | Whether it is clear how to apply and what happens next | 10 |
+
+Differentiation and proof weigh most: without them the rest stays general.
+
+The reading bands describe this method only. They are **not** market benchmarks, rankings or comparisons with other employers. The auditor has no market data and does not invent it.
 
 | Score | Reading |
 |---|---|
-| 85–100 | Distinctive, well supported, candidate-centred |
-| 70–84 | Strong, with identifiable, fixable gaps |
-| 50–69 | Functional, but generic or under-supported in important places |
-| 30–49 | Weak: few specific reasons or little proof for candidates |
-| 0–29 | No functioning proposition visible in the material |
+| 85–100 | Distinctive and well supported. What remains is refinement |
+| 70–84 | Strong, with visible gaps that can be fixed |
+| 50–69 | Works, but reads as generic or unsupported in important places |
+| 30–49 | Weak: few specific reasons to choose you and little proof |
+| 0–29 | The material shows no working proposition for candidates |
 
 ### Coverage
 
-Coverage is **how much of the method your material allowed the auditor to assess**. Some parts of the method cannot be judged from some materials; for example, consistency cannot be judged from a single page. Those parts are marked **NOT ASSESSABLE** and left out of the score. They are not scored as zero.
+Coverage is the share of the method's 34 criteria that your material allowed the auditor to assess. Some criteria cannot be judged from some material. For example, consistency cannot be judged from a single page. Those criteria are left out of the score, not scored as zero.
 
-**Coverage is not quality.** 100% coverage means "everything could be assessed", not "everything is good". A low coverage figure means the material is thin for a full audit, not that your brand is weak.
+**Coverage is not quality.** 100% means everything could be assessed. It does not mean everything is good.
 
-### Confidence
+### Score reliability
 
-Confidence tells you how much weight the score can bear:
-
-| Confidence | When |
+| Reliability | When |
 |---|---|
-| HIGH | Coverage ≥ 80% and at least three different types of material (for example EVP, careers page, job ads, employee stories) |
-| MEDIUM | Coverage 60–79%, or coverage ≥ 80% from fewer than three types of material |
-| LOW | Coverage below 60%; the score is marked **PROVISIONAL** |
+| High | Coverage of at least 80% and at least three different types of material, for example an EVP, a careers page, job ads and employee stories |
+| Medium | Coverage of 60–79%, or at least 80% from fewer than three types of material |
+| Low | Coverage below 60%; the score is marked **provisional** |
 
-- **Below 40% coverage,** there is no headline score (**SCORE WITHHELD**). The auditor says which materials would make a full audit possible.
-- **LOW confidence does not mean a bad employer brand.** It means the material was too thin for a reliable score.
-- **Never read the score without its Coverage and Confidence.** A 70 at LOW confidence and a 70 at HIGH confidence are different statements.
+- **Below 40% coverage there is no score.** The report says which materials would make a full audit possible.
+- **Reliability is about how complete the material is.** It does not mean the facts in it were checked. The auditor judges how convincing your material is to a candidate; it does not verify your claims.
+
+### What the audit covered
+
+Under the cover, the report lists what was reviewed and what was not: for example social media, review sites, the interview process, or what employees say outside official channels. Conclusions apply only to what was reviewed.
 
 ## The sections
 
 | Section | What it tells you |
 |---|---|
-| **One-line verdict** | The core diagnosis in a sentence |
-| **Scorecard** | Score per dimension, each with its reasons. The weakest dimensions show where to look first |
-| **What's working** | Strengths tied to specific evidence in your material. If little works, it says so briefly; it does not invent praise |
-| **Biggest problems** | Ordered by severity (CRITICAL / HIGH / MEDIUM / LOW), each with the evidence and why it matters to candidates |
-| **Genericity Test** | Each core claim tested: could a comparable employer say it unchanged, is it built from stock phrases, is it specific, can you own it? Verdicts: DISTINCTIVE / PARTIALLY DIFFERENTIATED / GENERIC, with a risk level and a reason |
-| **Claim → Proof ledger** | Each material claim with the evidence your material contains. Statuses: STRONGLY / PARTIALLY / WEAKLY SUPPORTED, UNSUPPORTED or CONFLICTING. Salary, hours and standard benefits are "hygiene facts" and are not ledgered |
-| **Red flags** | Named patterns (RF01–RF24), such as "generic employer claim", "benefit without proof" or "contradictory promise", with where they occur and how to fix them |
-| **Top 3 fixes** | What to do first, where, why first, and what evidence you need |
+| **Executive summary** | Three to five key findings and the first three actions. This is the part to show a manager |
+| **Score by dimension** | A bar for each dimension with a plain explanation of what drove its score |
+| **What works** | Strengths tied to specific evidence in your material. If little works, it says so; it does not invent praise |
+| **Main problems** | Ordered by priority (critical, high, medium, low). Each has the quotation from your material, why it matters, and the name of the common mistake it represents |
+| **Plan** | The three most important fixes. Each says what to do, why it has this priority, what information it needs, how much effort it takes, who to involve and what to watch afterwards. "What to watch" names signs to observe; it never predicts a result |
 | **Before → after** | Rewrites of one to three passages, using only your facts |
-| **Missing evidence** | What would improve the audit, and what would improve your communication |
+| **Questions for the company** | Every point that needs your confirmation or new information, in one checklist |
+| **Appendix** | The detail behind the conclusions: the genericity test for each main claim, the table of claims and the proof behind them, criterion-level scores, and the materials reviewed |
 
 ## Labels you will see
 
 | Label | Meaning |
 |---|---|
-| `EVIDENCE NEEDED:` | Proof that would make a claim convincing is missing from the material. **It does not mean the practice doesn't exist**; it means candidates can't see it |
-| `CONFIRM:` | Something plausible that you need to check before it is used. It is kept out of rewritten copy |
-| `INFERENCE` | The auditor's reasoning, not a fact from your material |
-| `UNVERIFIED` | A fact from your material that no independent source confirmed. This is normal for employer material, and does not mean the fact is doubtful |
-| `RELATIONSHIP: UNRESOLVED` | Two facts may or may not refer to the same role, team, site or period; the material doesn't say, so the link is not assumed |
-| `USER-SUPPLIED` | A fact you gave in chat. It can be used in rewrites, but it does not raise the score of the material |
+| **Confirm** | Something plausible that you need to check. Until you do, it is not used as a fact in the conclusions or in rewritten copy |
+| **Information needed** | The material does not contain this, and the copy cannot be strengthened without it. **It does not mean the practice does not exist**; it means candidates cannot see it |
+| **Supported / partly / weakly / not supported** | How well a claim is backed inside your material. This is not independent fact-checking |
+| **Only true of you / mostly only you / fits anyone** | The substitution test: replace your name with "a similar employer". If the sentence stays true, it fits anyone |
+| **Own words / some stock phrases / stock phrases** | Whether a claim is built from standard employer-brand phrases |
+| **Yours and proven / could be supported / not anchored** | Whether a claim rests on something you really have and your material shows |
 
 ## Three reading rules
 
 1. **Missing evidence is not evidence that a practice does not exist.** The audit measures what candidates can see.
-2. **Read the score together with Coverage and Confidence.**
-3. **Use the diagnosis before the rewrite.** Rewrites are drafts built only from your facts. Review them, check every `CONFIRM:` item, and verify factual claims before publishing.
+2. **Read the score together with coverage and reliability.**
+3. **Use the diagnosis before the rewrite.** Rewrites are drafts built only from your facts. Review them, answer the "Confirm" items and check every figure before publishing.
 
 ## EVP stress tests and content reviews
 
-These shorter tasks use different verdicts instead of a score:
-- **EVP stress test:** STRONG / PROMISING BUT GENERIC / WEAK / NOT YET AN EVP, with the reasoning ("verdict path") behind it.
-- **Content review:** EFFECTIVE / FIXABLE / NOT FIT FOR PURPOSE, plus a candidate decision check and keep / fix / remove / add.
+These shorter tasks reply in the chat, without an HTML report, and use verdicts instead of a score:
+- **EVP stress test:** strong / promising but generic / weak / not yet an EVP, with the reasoning behind the verdict.
+- **Content review:** works / fixable / does not do its job, plus a check of the questions a candidate needs answered and keep / fix / remove / add.

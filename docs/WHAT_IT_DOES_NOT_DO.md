@@ -3,7 +3,8 @@
 Employer Brand Auditor does not currently:
 
 - **Crawl websites by itself.** You paste or attach the material. It does not open links.
-- **Verify employer claims against external sources automatically.** Facts in your material are treated as UNVERIFIED unless you supply an independent source.
+- **Verify employer claims against external sources automatically.** Facts in your material are treated as not independently checked unless you supply an independent source.
+- **Compare you with other employers or the market.** The score is measured against the method, not against competitors, and the auditor has no market data.
 - **Benchmark compensation or benefits** against a market, and does not say whether pay is competitive.
 - **Provide legal advice** or check job ads for legal compliance. Where wording might matter legally, it suggests a specialist review.
 - **Replace candidate research.** It judges how the material reads to a candidate; it does not measure what real candidates think.

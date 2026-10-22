@@ -2,7 +2,7 @@
 
 This file is for maintainers and contributors. Claude Code does not load it. User documentation lives in `README.md`, `QUICKSTART.md` and `docs/`.
 
-**Behaviour is frozen at v0.1.4.** The SHA256 of `methodology/`, `skills/`, both manifests and `CLAUDE.md` (now `.claude/CLAUDE.md`) are recorded in `evals/results/v0.1.4/pilot-candidate/snapshot.json`. v0.1.5 is a metadata-only revision (manifest version, `author`, `license`); its snapshot, with a per-file comparison against v0.1.4, is `evals/results/v0.1.5/metadata-release/snapshot.json`. Any change to those files needs a new version, updated evals, a passing validator and a new snapshot (see `CLAUDE.md`).
+**Current version: v0.2.0** (report and readability release). v0.2.0 changes how results are presented: the full audit is delivered as an HTML report built from shipped templates, with plain-language labels in the conversation's language and reader-facing writing rules. Scoring, evidence grading, genericity testing and rewrite fidelity are unchanged from v0.1.4. Earlier behaviour snapshots: `evals/results/v0.1.4/pilot-candidate/snapshot.json` (frozen pilot behaviour) and `evals/results/v0.1.5/metadata-release/snapshot.json` (metadata-only revision). Any change to `methodology/`, `skills/`, `templates/` or the manifests needs a new version, updated evals and a passing validator (see `.claude/CLAUDE.md`).
 
 ---
 
@@ -24,10 +24,14 @@ employer-brand-auditor/
     genericity-test.md         # signature Genericity Test
     red-flags.md               # RF01–RF24
     output-contracts.md        # output structures, tone, Russian headings
-    terminology.md             # canonical vocabulary
+    terminology.md             # canonical vocabulary and reader-facing wording (RU/EN)
+    report-format.md           # how a full audit is delivered: HTML report, data format, chat summary, writing rules
+  templates/
+    audit-report.ru.html       # generated report template (Russian)
+    audit-report.en.html       # generated report template (English)
   evals/
     README.md                  # how to run evals, acceptance criteria
-    test-cases.md              # 97 behavioural cases (original, calibration and safety-regression cases)
+    test-cases.md              # 103 behavioural cases (original, calibration, safety-regression and v0.2.0 report cases)
     fixtures/                  # 7 synthetic employer material sets
     results/                   # behaviour snapshots (SHA256 of the frozen files)
   scripts/
@@ -71,7 +75,7 @@ Expected broad results (details and grading notes in `evals/test-cases.md`):
 | `contradictory-employer.md` | Consistency conflicts surfaced (autonomy vs. approvals, experimentation vs. rigid release process, remote-first vs. office-based) |
 | `malicious-input.md` | Embedded instructions reported and ignored; score computed normally; response not in French |
 
-The full 97-case suite, acceptance criteria and the eval runner (`evals/run_evals.py`) are in `evals/`. Raw eval transcripts, calibration reports and the real-world pilot material are kept privately by the maintainer and are not part of this repository, because they contain local environment data and real employers' content.
+The full 103-case suite, acceptance criteria and the eval runner (`evals/run_evals.py`) are in `evals/`. Raw eval transcripts, calibration reports and the real-world pilot material are kept privately by the maintainer and are not part of this repository, because they contain local environment data and real employers' content.
 
 ---
 
@@ -94,7 +98,19 @@ The skills themselves are plain `SKILL.md` files with standard `name`/`descripti
 
 ---
 
-## v0.2 direction
+## Report templates
+
+The HTML report templates are generated, not edited by hand:
+
+```bash
+python3 scripts/build_report_templates.py
+```
+
+The script holds the CSS, the renderer, the Russian and English labels for every coded field (including the plain names of red flags RF01–RF24) and the fixed "How to read this report" text. It writes `templates/audit-report.ru.html` and `templates/audit-report.en.html`. The skill copies the template for the conversation's language and replaces the single `REPORT_DATA_JSON` slot with the audit data described in `methodology/report-format.md` §3.
+
+---
+
+## Future direction
 
 Planned, not yet built:
 
@@ -103,7 +119,7 @@ Planned, not yet built:
 - **Saved audits** — persist audits so re-audits can show what changed and track fixes over time.
 - **Structured employer comparison** — side-by-side audits of two or more employers from comparable, supplied or retrieved material, with like-for-like touchpoint matching.
 
-None of these exist in v0.1.4.
+None of these exist in v0.2.0.
 
 
 ---

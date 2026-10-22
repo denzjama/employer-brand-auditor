@@ -24,7 +24,7 @@ Collect **3–5 candidate-facing materials** as text:
 - one or two job ads;
 - an employee story.
 
-Paste them into the chat, or attach them as files. The auditor does not browse the web, so it sees only what you give it.
+Paste them into the chat, attach them as files, or put them in a folder and name the folder in your request. The auditor does not browse the web, so it sees only what you give it.
 
 ## 3. Ask for an audit
 
@@ -36,17 +36,21 @@ Run a full employer brand audit of the materials below. They are our current can
 
 In Russian: `Проведи полный аудит бренда работодателя по этим материалам.`
 
-## 4. Read Coverage and Confidence first
+## 4. Open the report
 
-The top of the audit shows three numbers:
-- the **Employer Brand Score** (0–100);
-- **Coverage**: how much of the method your material allowed it to assess;
-- **Confidence**: how much the score can be relied on.
+You get a short reply in the chat and an **HTML report** in your working folder. Open it in any browser; the button in the corner saves it as a PDF. The report is in the language of your conversation.
 
-Read **Coverage** and **Confidence** before the score. A score from thin material is marked **PROVISIONAL**. Below 40% coverage, no score is given at all. See [`docs/HOW_TO_READ_AN_AUDIT.md`](docs/HOW_TO_READ_AN_AUDIT.md).
+At the top you see three numbers, each with a one-line explanation:
+- the **score** (0–100) and what it means on the method's scale;
+- **coverage**: how much of the method your material allowed it to assess;
+- **score reliability**: whether there was enough material of different types for a stable score.
+
+A score from thin material is marked **provisional**. Below 40% coverage, no score is given at all. The report has a built-in "How to read this report" section; the same explanation is in [`docs/HOW_TO_READ_AN_AUDIT.md`](docs/HOW_TO_READ_AN_AUDIT.md).
+
+If you prefer the audit in the chat without a file, say so: "Give me the audit here in the chat.
 
 ## 5. Use the diagnosis before the rewrite
 
-Start with the **biggest problems** and the **Top 3 fixes**. Rewrites come last, and use only facts that are in your material. Missing facts are marked `EVIDENCE NEEDED:` and facts to check are marked `CONFIRM:`. Review any rewritten copy before publishing it.
+Start with the **executive summary**, the **main problems** and the **plan**. Rewrites come last, and use only facts that are in your material. Missing facts are marked **Information needed** and facts to check are marked **Confirm**; all of them are collected in "Questions for the company". Review any rewritten copy before publishing it.
 
 **Next:** see [`docs/EXAMPLE_PROMPTS.md`](docs/EXAMPLE_PROMPTS.md) for other tasks (EVP stress test, job-ad review, claim-to-proof). For a worked example, see [`demo/`](demo/README.md).

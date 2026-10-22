@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employer brand audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16141F;--soft:#5D5A6B;--line:#E4E1EA;--paper:#FBFAF7;--card:#FFFFFF;--accent:#6B3FD4;--accent2:#19B6C9;--hi:#D6455D;--mid:#E39B1A;--lo:#8B8898;--ok:#1F9D6B;--tint:#F2EEFB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Onest,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 28px 80px}
+h1,h2,h3,h4{line-height:1.15;margin:0}
+h2{font-size:30px;font-weight:800;letter-spacing:-.01em;margin:64px 0 20px;padding-top:12px;border-top:3px solid var(--ink)}
+h3{font-size:21px;font-weight:700}
+h4{font-size:16px;font-weight:700}
+p{margin:0 0 12px}
+ul{margin:0;padding-left:20px}
+li{margin:4px 0}
+.muted{color:var(--soft)}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+/* cover */
+.cover{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:stretch;margin-bottom:8px}
+.cover-main{background:var(--ink);color:#fff;border-radius:18px;padding:36px;display:flex;flex-direction:column;justify-content:space-between;min-height:320px;position:relative;overflow:hidden}
+.cover-main:after{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:conic-gradient(from 90deg,var(--accent2),var(--accent),#FF5FA2,var(--accent2));filter:blur(60px);opacity:.55}
+.cover-main h1{font-size:46px;font-weight:800;letter-spacing:-.02em;position:relative;z-index:1}
+.cover-main .kicker{color:#C9B8FF;position:relative;z-index:1}
+.cover-meta{position:relative;z-index:1;color:#CFCBDC;font-size:15px}
+.verdict{font-size:18px;line-height:1.5;font-weight:400;color:#E9E6F2;position:relative;z-index:1;margin:22px 0}
+.scorebox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.ring{display:flex;align-items:center;gap:20px}
+.ring svg{width:132px;height:132px;flex:none}
+.ring .num{font-size:52px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.ring .num small{font-size:20px;color:var(--soft);font-weight:500}
+.band{font-size:15px;color:var(--soft);line-height:1.4}
+.metric{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:12px;font-size:15px}
+.metric b{font-size:17px}
+.metric span.h{display:block;color:var(--soft);font-size:13px;line-height:1.35}
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:var(--tint);color:var(--accent)}
+.pill.prov{background:#FFF4DC;color:#9A6400}
+/* nav */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0}
+.toc a{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:99px;padding:6px 14px}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+/* summary */
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.panel h3{margin-bottom:12px}
+.actions li{margin:8px 0}
+/* howto */
+.lead{font-size:19px;line-height:1.5}
+.howto-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0 8px}
+.howto-card{background:var(--tint);border-radius:14px;padding:20px}
+.howto-card h4{margin-bottom:8px;color:var(--accent)}
+.howto-card p{font-size:15.5px;margin:0}
+.howto-h{margin:26px 0 8px}
+.howto-list li{margin:8px 0}
+details.howto{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 24px 20px}
+details.howto summary{cursor:pointer;font-weight:700;padding:14px 0;color:var(--accent)}
+/* scorecard */
+.dim{display:grid;grid-template-columns:280px 1fr 70px;gap:18px;align-items:start;padding:16px 0;border-bottom:1px solid var(--line)}
+.dim:last-child{border-bottom:0}
+.dim .name{font-weight:700}
+.dim .desc{font-size:13.5px;color:var(--soft);line-height:1.4;margin-top:4px}
+.bar{height:14px;background:#EEEBF3;border-radius:99px;overflow:hidden;margin:4px 0 10px}
+.bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.dim .why{font-size:15px}
+.dim .pts{text-align:right;font-weight:800;font-size:20px}
+.dim .pts small{font-size:13px;color:var(--soft);font-weight:500}
+/* cards */
+.cards{display:grid;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;border-left:6px solid var(--line)}
+.card.sev-critical,.card.sev-high{border-left-color:var(--hi)}
+.card.sev-medium{border-left-color:var(--mid)}
+.card.sev-low{border-left-color:var(--lo)}
+.card.good{border-left-color:var(--ok)}
+.card h3{margin:6px 0 10px}
+.sev{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.sev-critical .sev,.sev-high .sev{color:var(--hi)}.sev-medium .sev{color:#B07400}.sev-low .sev{color:var(--lo)}
+.lbl{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:12px 0 4px}
+blockquote{margin:6px 0;padding:10px 14px;background:#F7F5FA;border-radius:10px;font-size:15.5px}
+.fix{counter-increment:fix}
+.fix h3:before{content:counter(fix);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;margin-right:12px;font-size:17px}
+.cards.fixes{counter-reset:fix}
+.effort{display:inline-block;font-size:13px;font-weight:600;padding:3px 10px;border-radius:8px;background:#E8F7F0;color:#13734E}
+.effort.data{background:#FFF4DC;color:#9A6400}
+/* rewrites */
+.rw{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.rw .before{background:#F7F5FA;border-radius:12px;padding:16px;font-size:15.5px;white-space:pre-line}
+.rw .after{background:#EFFAF5;border:1px solid #CBEBDD;border-radius:12px;padding:16px;font-size:15.5px;white-space:pre-line}
+/* tags */
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:7px;margin-right:6px;vertical-align:1px}
+.tag-q{background:#E6F6F8;color:#0E7C8A}.tag-e{background:#FFF4DC;color:#9A6400}
+.qlist{list-style:none;padding:0}
+.qlist li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:8px 0}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th{background:#F4F2F8;text-align:left;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--soft);padding:10px 12px}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+.chip{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 8px;border-radius:7px;background:#F1EFF5;white-space:nowrap}
+.chip.g{background:#E8F7F0;color:#13734E}.chip.m{background:#FFF4DC;color:#9A6400}.chip.r{background:#FDE8EC;color:#B3263E}
+.tblwrap{overflow-x:auto;margin:10px 0 26px}
+.notice{background:#FFF4DC;border-radius:12px;padding:14px 18px;margin:18px 0}
+.scope{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;font-size:15px}
+.scope h4{margin-bottom:6px}
+footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--soft)}
+.printbtn{position:fixed;right:18px;bottom:18px;background:var(--ink);color:#fff;border:0;border-radius:99px;padding:12px 18px;font:600 14px Onest,Arial,sans-serif;cursor:pointer}
+@media (max-width:820px){.scope,.cover,.summary,.howto-grid,.rw{grid-template-columns:1fr}.dim{grid-template-columns:1fr}.dim .pts{text-align:left}.cover-main h1{font-size:34px}}
+@media print{#summary + .summary{break-after:page}body{background:#fff;font-size:12pt}.wrap{max-width:none;padding:0}.printbtn,.toc{display:none}h2{break-after:avoid}.card,.dim,.panel,table,.rw{break-inside:avoid}details.howto{border:0;padding:0}.cover-main{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<button class="printbtn" onclick="window.print()" id="printbtn"></button>
+<!-- Audit data. The skill replaces the placeholder below with the audit JSON (format: methodology/report-format.md). -->
+<script id="report-data" type="application/json">{
+"lang": "en",
+"company": "Quellmoor Lift & Access",
+"date": "2026-10-22",
+"plugin_version": "0.2.0",
+"score": {"value": 63, "provisional": false, "withheld": false, "coverage": 100, "confidence": "high", "reliability_note": "all 34 criteria assessed; four types of material: employer proposition, careers page, job ads, employee story"},
+"verdict": "Specific proof of essential, demanding work sits in the brand guide, one job ad and one employee story, while the careers page and the coordinator ad make their case with phrases any comparable employer could use.",
+"notices": ["All five texts were described as candidate-facing, so the employer-brand guide extract was scored on that basis. If the guide is internal only, its call-out figures and the apprentice pairing are not visible to candidates, and the Proof score overstates what candidates actually see."],
+"materials": [
+{"name": "Careers page (intro)", "type": "Careers page"},
+{"name": "Employer proposition: \"Lift people up\" (employer-brand guide)", "type": "Employer value proposition"},
+{"name": "Lift Service Engineer, Westmere North", "type": "Job ad"},
+{"name": "Customer Service Coordinator, Head Office", "type": "Job ad"},
+{"name": "Ilse Varga, Lift Service Engineer", "type": "Employee story"}
+],
+"scope": {
+"reviewed": ["Five texts you supplied: the careers page introduction, the employer proposition from the employer-brand guide, the Lift Service Engineer ad (Westmere North), the Customer Service Coordinator ad (Head Office) and Ilse Varga's story", "All five treated as candidate-facing, as you stated"],
+"not_reviewed": ["The rest of the careers site, vacancy listings and application forms", "Apprentice recruitment material", "Social media and recruitment campaigns", "Review sites and what employees say outside official channels", "Interview, offer and onboarding communications"]
+},
+"summary": {
+"points": [
+"Your most persuasive material sits away from the careers page. The hospital response figures, the apprentice pairing and Ilse Varga's story make a case that is specific to you. The careers page offers four stock bullets instead, such as \"A supportive, close-knit team\".",
+"The engineer ad gives the facts needed to decide: pay range, hours, on-call frequency, patch and van. The coordinator ad gives no salary and opens with a stock line.",
+"Two promises do not fit the roles they are attached to. Flexible working is listed for a field role with a fixed weekday schedule and on-call. The growth pillar's proof covers apprentices, while the engineer ad requires the qualification already.",
+"On-call is the honest thread in the set. The ad states one week in four, and Ilse says her first winter on call nearly put her off. Together with the hospital work, this is the most ownable idea in the material. At the moment \"Like a family\" and \"Flexible working\" sit where it could be."
+],
+"actions": [
+"Rebuild the careers page's \"Why join us?\" from the figures, the apprentice pairing and Ilse's story you already have.",
+"Add salary, shift pattern and training length to the coordinator ad and replace its stock opening.",
+"Define flexible working and post-qualification development for engineers, or remove those promises."
+]
+},
+"dimensions": [
+{"id": "clarity", "score": 7, "max": 12, "assessable": true,
+"why": "The offer has to be pieced together. The careers page opens with what the company does, then four general bullets. The guide has a clear lead idea with three pillars, but that idea does not appear on the careers page or in the ads.",
+"criteria": [
+{"name": "Offer clear at a glance", "score": 2, "max": 4, "assessable": true, "note": "The careers page's first paragraph describes the service; the offer follows as four general bullets. The guide's promise and pillars appear in none of the other four texts."},
+{"name": "Benefit to the candidate stated", "score": 2, "max": 4, "assessable": true, "note": "The engineer ad states pay, hours, holiday and pension. The careers page and the coordinator ad state benefits only in general terms such as \"Competitive salary\"."},
+{"name": "One main message", "score": 1, "max": 2, "assessable": true, "note": "The guide has one lead idea with three pillars beneath it, but the careers page and the ads do not use it."},
+{"name": "Plain language", "score": 2, "max": 2, "assessable": true, "note": "Plain throughout. NVQ Level 3 is a stated qualification requirement."}
+]},
+{"id": "differentiation", "score": 9, "max": 16, "assessable": true,
+"why": "The work itself is specific: around 3,400 lifts and escalators in the Westmere region, hospital entrapment calls, a named patch with two hospitals. Only the guide's first pillar turns this into a reason to join. The team, flexibility and growth claims could sit unchanged on a comparable employer's page.",
+"criteria": [
+{"name": "Fits only you", "score": 3, "max": 5, "assessable": true, "note": "Of five tested claims, the \"Matter\" pillar breaks under substitution because of its figures and the apprentice pillar mostly holds. The promise line, the team pillar and flexible working fit any comparable employer."},
+{"name": "Free of stock phrases", "score": 1, "max": 3, "assessable": true, "note": "The two passages that argue for joining (the careers page bullets and the coordinator ad) are built from stock phrases: \"competitive pay, great benefits\", \"supportive, close-knit team\", \"dynamic team\"."},
+{"name": "Your own realities used", "score": 3, "max": 4, "assessable": true, "note": "Several specifics exist (lift count, call-out figures, patch, apprentice pairing, on-call rota). On the careers page they describe the company and are not used as reasons to join."},
+{"name": "Hard to copy", "score": 1, "max": 2, "assessable": true, "note": "The hospital work is structural, but the claim built on it is only partly anchored: a comparable lift firm could publish its own figures."},
+{"name": "Memorable", "score": 1, "max": 2, "assessable": true, "note": "\"Lift people up\" is memorable but appears only in the guide. The careers page headline appears once."}
+]},
+{"id": "proof", "score": 8, "max": 16, "assessable": true,
+"why": "Two of six claims are partly supported: essential work and learning the trade. The team claim, flexible working and the pay claim have only weak support, and \"employer of choice\" has none.",
+"criteria": [
+{"name": "Claims with proof", "score": 2, "max": 6, "assessable": true, "note": "Two of six claims, both core, are partly supported. The other four have weak or no support."},
+{"name": "How specific the proof is", "score": 2, "max": 4, "assessable": true, "note": "The two supported claims have specific proof (figures with a timeframe, a named qualification), but they are a minority of the six."},
+{"name": "Proof fits the claim", "score": 2, "max": 3, "assessable": true, "note": "The proof fits two claims, and for growth only at apprentice level."},
+{"name": "Proof next to the claim", "score": 2, "max": 3, "assessable": true, "note": "In the guide, proof sits next to the \"Matter\" and \"Master your trade\" pillars. On the careers page, no claim has proof beside it."}
+]},
+{"id": "audience_fit", "score": 8, "max": 12, "assessable": true,
+"why": "Each job ad speaks clearly to its role. The engineer ad answers the practical questions of a field role; the coordinator ad does not state pay. The guide's development pillar speaks to apprentices, an audience no supplied vacancy addresses.",
+"criteria": [
+{"name": "Clear who it is for", "score": 2, "max": 3, "assessable": true, "note": "The ads are clearly targeted. The careers page addresses no one in particular, and the guide mixes engineering talent and apprentices."},
+{"name": "Decision factors covered", "score": 3, "max": 4, "assessable": true, "note": "The engineer ad covers pay, hours, on-call frequency, patch and vehicle. The coordinator ad omits pay and the shift pattern within the 7am to 7pm window."},
+{"name": "Adapted by role", "score": 2, "max": 3, "assessable": true, "note": "Engineers get a specific ad, coordinators a generic one. The shared idea of essential work does not reach the coordinator ad."},
+{"name": "Real choices", "score": 1, "max": 2, "assessable": true, "note": "The engineer ad and the story state on-call and lone working plainly. The careers page and the guide present the job without its demands."}
+]},
+{"id": "employee_truth", "score": 9, "max": 10, "assessable": true,
+"why": "Ilse Varga's story is the strongest text in the set: named, dated, with a hard night described in detail and a downside she still admits. The ads describe real tasks and conditions. Culture is still described with adjectives wherever it is named.",
+"criteria": [
+{"name": "Employee voice", "score": 3, "max": 3, "assessable": true, "note": "One attributable engineer describes concrete events in her own words: joining as an apprentice in 2019, a 2am hospital call, qualifying in 2023."},
+{"name": "What the work is like", "score": 3, "max": 3, "assessable": true, "note": "The ads give tasks, patch, lone and paired work, the van, the on-call rota and the coordinator shift window."},
+{"name": "Difficulties named", "score": 2, "max": 2, "assessable": true, "note": "The story says the first winter on call was hard and that she still does not love being on call in January. The engineer ad states on-call one week in four."},
+{"name": "Culture shown through behaviour", "score": 1, "max": 2, "assessable": true, "note": "The mentoring and the phone support show behaviour, but the culture lines themselves are adjectives: \"supportive, close-knit\", \"Like a family\", \"friendly, supportive\"."}
+]},
+{"id": "consistency", "score": 8, "max": 12, "assessable": true,
+"why": "The careers page, the guide, the engineer ad and the story broadly tell one story of essential work and learning on the job. The coordinator ad drifts into generic copy. Flexible working sits unexplained next to the engineer ad's fixed schedule.",
+"criteria": [
+{"name": "Same core promise", "score": 3, "max": 5, "assessable": true, "note": "Four texts share the idea of essential work; the coordinator ad does not. The promise line appears only in the guide."},
+{"name": "Proof tells the same story", "score": 3, "max": 3, "assessable": true, "note": "The guide's hospital figure, the ad's patch with two hospitals and Ilse's hospital call reinforce each other."},
+{"name": "Same tone", "score": 1, "max": 2, "assessable": true, "note": "The careers page, engineer ad and story are plain. The coordinator ad opens with \"Be part of a dynamic team at the heart of our operation!\""},
+{"name": "No contradictions", "score": 1, "max": 2, "assessable": true, "note": "No direct contradiction, but \"Flexible working\" in the engineer ad is not explained next to a 40-hour Monday-to-Friday week with on-call one week in four."}
+]},
+{"id": "candidate_relevance", "score": 8, "max": 12, "assessable": true,
+"why": "The engineer ad answers most practical questions. The careers page gives general reasons to join, and the coordinator ad leaves pay, shift length and training length open.",
+"criteria": [
+{"name": "Why join", "score": 2, "max": 3, "assessable": true, "note": "The careers page reasons are general. The specific reason, essential work in hospitals and housing, is made in the guide and the story."},
+{"name": "Role reality", "score": 2, "max": 3, "assessable": true, "note": "The engineer role is concrete. The coordinator ad lists tasks but not the team, training length or shift length."},
+{"name": "Decision facts", "score": 2, "max": 3, "assessable": true, "note": "The engineer ad states pay range, hours, on-call and holiday, but not the on-call allowance amount, contract type or progression. The coordinator ad states no pay."},
+{"name": "Questions anticipated", "score": 2, "max": 3, "assessable": true, "note": "The story answers how hard on-call can be. Open: the on-call allowance, what flexible working means in a field role, and routes after qualifying."}
+]},
+{"id": "conversion", "score": 6, "max": 10, "assessable": true,
+"why": "Only the engineer ad tells the candidate exactly how to apply and when to expect a reply. The careers page and the coordinator ad use generic apply lines with nothing on what follows.",
+"criteria": [
+{"name": "Next step clear", "score": 2, "max": 3, "assessable": true, "note": "The engineer ad gives an email address. The careers page says only to apply, and the coordinator ad points back to the careers page."},
+{"name": "Reasons near the call to action", "score": 1, "max": 2, "assessable": true, "note": "Each call to action follows a benefits list, but on the careers page and in the coordinator ad that list is general."},
+{"name": "Effort explained", "score": 1, "max": 2, "assessable": true, "note": "The engineer ad says to send a CV. Nothing else on effort, and no contact person."},
+{"name": "Call to action fits the reader", "score": 1, "max": 2, "assessable": true, "note": "All three are generic apply lines."},
+{"name": "What happens after applying", "score": 1, "max": 1, "assessable": true, "note": "The engineer ad says you aim to reply within 10 working days."}
+]}
+],
+"strengths": [
+{"title": "An employee story with a real night in it", "text": "Ilse Varga, Lift Service Engineer, names her start as an apprentice in 2019, her mentor Joe and his 22 years with the company, a 2am call to Westmere General with a patient trolley in a lift stuck between floors, qualifying in 2023, and starting to mentor two apprentices this year. She also says the first winter on call nearly put her off. It is the only text in the set that shows support between colleagues as behaviour."},
+{"title": "The engineer ad answers the practical questions", "text": "£38,000–£44,000 plus on-call allowance. 40 hours a week, Monday to Friday, plus on-call one week in four. Field-based with a company van. A northern patch with two hospitals and more than 60 residential blocks. Alone on most routine visits, in pairs for major repairs. A reply aimed for within 10 working days."},
+{"title": "Proof of essential work, with a timeframe", "text": "The guide states that last year your engineers answered 11,200 call-outs and that 92% of entrapment calls in hospitals were reached within 45 minutes. It is the only figure in the set that shows what the work achieves."},
+{"title": "The demanding part is told the same way twice", "text": "The engineer ad states the on-call rota, and Ilse's story describes what on-call felt like and why she still does it. Two independent texts agree on the hardest condition of the job."}
+],
+"problems": [
+{"severity": "high", "title": "The strongest proof is missing from the careers page, which makes its case with stock phrases.",
+"evidence": ["\"We offer competitive pay, great benefits and real opportunities to grow.\"", "\"Our people are at the heart of everything we do.\"", "The \"Why join us?\" list has four bullets, none with a figure, practice or example. The hospital figures, the apprentice pairing and Ilse's story appear only in the guide and the story."],
+"why": "The careers page is the only text that makes the general case for joining, and that case contains no employer-specific information. The specifics that would make it yours sit in other texts. The promise \"Lift people up\" appears only in the guide.",
+"flags": ["RF23", "RF01"]},
+{"severity": "high", "title": "The coordinator ad gives no pay and no specific reason to join.",
+"evidence": ["\"Be part of a dynamic team at the heart of our operation!\"", "The offer lists \"Competitive salary\" with no figure. The shift line gives a 7am to 7pm window, Monday to Saturday, with no shift length or pattern."],
+"why": "The ad says what the job is but not what it pays or what a week looks like. Its opening line and two of its four offer bullets are stock phrases. The essential-work idea that runs through the other texts is absent, although the role keeps customers updated until their lift is back in service.",
+"flags": ["RF01"]},
+{"severity": "medium", "title": "Flexible working is promised for a field role whose schedule looks fixed.",
+"evidence": ["\"Flexible working\" appears in the careers page bullets and in the engineer ad's offer. The same ad states 40 hours a week, Monday to Friday, plus on-call one week in four, field-based.", "The only flexibility defined anywhere is the coordinator ad's hybrid working: two days a week at home after training."],
+"why": "The engineer ad gives the promise no content, and its own schedule does not show where flexibility applies. A candidate reading this may reasonably ask what flexible means for a field engineer on an on-call rota.",
+"flags": ["RF06"]},
+{"severity": "medium", "title": "The growth promise has a mechanism for apprentices only, not for the qualified engineers you advertise for.",
+"evidence": ["\"Every apprentice is paired with a senior engineer for the whole programme and works towards a Level 3 lift engineering qualification.\"", "The engineer ad requires NVQ Level 3 in lift engineering or equivalent and offers \"Training and development opportunities\" with no detail."],
+"why": "The guide's development proof applies to apprentices. The only engineer vacancy asks for a Level 3 qualification already, so the pillar's proof does not reach that ad's reader. No text describes development after qualifying, apart from Ilse starting to mentor two apprentices this year.",
+"flags": ["RF14"]},
+{"severity": "medium", "title": "Team culture is described as a family, while the real evidence of support goes unused.",
+"evidence": ["\"Like a family, we celebrate wins together.\"", "\"A supportive, close-knit team\" (careers page) and \"A friendly, supportive team\" (coordinator ad)."],
+"why": "Three texts describe the team with adjectives, and the guide's Belong pillar contains no practice. Joe talking Ilse through a 2am call on the phone is concrete behaviour, but it is not used where culture is claimed. The engineer ad also says most routine visits are done alone, and no text says how support works in that set-up.",
+"flags": ["RF16", "RF07"]},
+{"severity": "low", "title": "\"Employer of choice\" is claimed with nothing behind it.",
+"evidence": ["\"We are proud to be an employer of choice for engineering talent.\""],
+"why": "No award, figure or comparison in the material supports it. It sits next to the specific apprentice-pairing sentence and adds a claim the material cannot back.",
+"flags": ["RF02"]},
+{"severity": "low", "title": "Calls to action are generic, and the application process is described in one ad only.",
+"evidence": ["\"Apply today and take the next step in your career.\"", "The coordinator ad says to apply through the careers page, with no link or next step."],
+"why": "The engineer ad says where to send a CV and when to expect a reply. The careers page and the coordinator ad give neither a direct route nor what happens next.",
+"flags": ["RF20"]}
+],
+"fixes": [
+{"title": "Rebuild the careers page's case for joining from facts you already have",
+"needs_new_data": false,
+"steps": ["Replace the paragraph and four bullets under \"Why join us?\" with the lift count, last year's call-out and hospital figures, the apprentice pairing and a link to Ilse Varga's story (see Before → after).", "State the on-call rota for the Lift Service Engineer role on the careers page, as the ad does.", "Remove \"Flexible working\" and \"competitive pay, great benefits\" from the page until they can be stated with specifics.", "Decide whether \"Lift people up\" is meant for candidates. If it is, use it as the careers page headline with the three pillars beneath it."],
+"why_first": "It uses only material that already exists, and the careers page is the one text that makes the general case for joining.",
+"needs": ["Confirmation that last year's figures can be published, and which year they cover"],
+"effort": "small",
+"effort_note": "rewriting one section with existing facts, plus one check with operations on the figures",
+"who": ["employer brand or recruitment marketing", "operations (call-out figures)", "Ilse Varga (approval to feature her story)"],
+"check": ["Whether applicants mention the hospital work or Ilse's story at first interview", "Whether on-call questions come up earlier in the process than before", "Clicks from the careers page to the engineer vacancy"]},
+{"title": "Give the coordinator ad a salary range, a real week and a reason to join",
+"needs_new_data": true,
+"steps": ["Add the salary range.", "State shift length, how many Saturdays and how the rota is set.", "State how long training lasts before hybrid working starts.", "Replace the opening line with what the role does when a lift has a fault (see Before → after).", "Add the application link and what happens after applying."],
+"why_first": "It is the weakest of the five texts, and its gaps are decision facts rather than wording.",
+"needs": ["Salary range", "Shift length and Saturday pattern", "Training length", "Who the coordinator works with day to day"],
+"effort": "medium",
+"effort_note": "a few facts from reward and the head-office team, then a rewrite",
+"who": ["HR or reward (salary)", "customer service manager (rota, training, team)"],
+"check": ["Number and fit of applications to the coordinator role", "Whether candidates still ask about pay or shifts at screening"]},
+{"title": "Define flexible working and growth for qualified engineers, or drop the promises",
+"needs_new_data": true,
+"steps": ["Ask field operations what flexible working means for a Lift Service Engineer on a Monday-to-Friday week with on-call. State it in the ad, or remove the bullet.", "State the on-call allowance and what an on-call week involves.", "Describe what development exists after qualifying, with figures if you have them. Otherwise remove \"Training and development opportunities\" from the engineer ad.", "Replace the guide's family line with the mentoring example from Ilse's story (see Before → after)."],
+"why_first": "These promises sit in the ad for your core field role, and they are the ones a new hire can test against daily reality.",
+"needs": ["What flexible working means for field engineers", "On-call allowance amount and typical on-call week", "Development routes and numbers for qualified engineers"],
+"effort": "medium",
+"effort_note": "input from field operations and HR, then edits to one ad, the careers page and the guide",
+"who": ["field operations manager", "HR (policies, development data)", "senior engineers and mentors (examples)"],
+"check": ["Whether flexible working comes up as a question in interviews or in early leavers' feedback", "Whether engineer applicants ask about progression"]}
+],
+"rewrites": [
+{"title": "Careers page: the case for joining",
+"original": "We are a family-owned business that has grown to 280 people since 1987. We offer competitive pay, great benefits and real opportunities to grow. Our people are at the heart of everything we do.\n\nWhy join us?\n- Work that matters to the communities we serve\n- Training and development from day one\n- A supportive, close-knit team\n- Flexible working\n\nApply today and take the next step in your career.",
+"problem": "Every reason given could be used unchanged by a comparable employer. The figures and practices that make the work yours are not on the page.",
+"logic": "Lead with the facts already in your material, keep their timeframe and scope, state the on-call condition plainly, and drop the promises the material cannot yet explain.",
+"rewrite": "Why join us?\n\nWork people depend on. We maintain and repair around 3,400 lifts and escalators in hospitals, housing blocks, shopping centres and railway stations across the Westmere region. Last year our engineers answered 11,200 call-outs, and 92% of entrapment calls in hospitals were reached within 45 minutes.\n\nApprentices learn alongside a senior engineer. Every apprentice is paired with a senior engineer for the whole programme and works towards a Level 3 lift engineering qualification.\n\nThe hard parts, up front. Our Lift Service Engineer role in Westmere North includes on-call one week in four. Read how Ilse Varga, Lift Service Engineer, got through her first winter on call: [link to story]\n\nFamily-owned since 1987, with 280 people today.\n\nSee current vacancies: [link]",
+"notes": [{"kind": "confirm", "text": "That last year's figures can be published, and the year they refer to. Name the year in the copy."}, {"kind": "evidence", "text": "What flexible working means for each role, if the bullet is to return."}, {"kind": "evidence", "text": "Development routes for qualified engineers and office staff, if growth is to be promised beyond apprentices."}]},
+{"title": "Employer proposition: the Belong pillar",
+"original": "Belong. We look out for each other. Like a family, we celebrate wins together.",
+"problem": "Two sentences of adjectives and a stock phrase. The pillar names no practice.",
+"logic": "Keep the claim and show it with the one concrete example the material contains, quoted verbatim and attributed.",
+"rewrite": "Belong. We look out for each other. Ilse Varga, Lift Service Engineer, remembers a 2am call to Westmere General: a lift stuck between floors with a patient trolley inside. \"Joe talked me through it on the phone, but I was the one in the motor room.\" Joe was her mentor. This year she started mentoring two apprentices herself.",
+"notes": [{"kind": "confirm", "text": "That Ilse Varga and Joe approve the use of the story in this pillar."}, {"kind": "evidence", "text": "Practices beyond the apprentice relationship, for example how on-call engineers get support at night."}]},
+{"title": "Coordinator ad: opening and offer",
+"original": "Be part of a dynamic team at the heart of our operation!\n\nWhat we offer\n- Competitive salary\n- Hybrid working (two days a week at home after training)\n- Shifts on a rota between 7am and 7pm, Monday to Saturday\n- A friendly, supportive team\n\nApply now through our careers page.",
+"problem": "Stock opening, no salary, no shift pattern, no route to apply.",
+"logic": "Open with what the coordinator actually does, keep the stated conditions word for word, and leave clear gaps for the facts the ad needs.",
+"rewrite": "You take the calls from building managers and residents when a lift has a fault. You log it, dispatch the right engineer and keep the customer updated until their lift is back in service.\n\nWhat we offer\n- Salary: [add the range]\n- Shifts on a rota between 7am and 7pm, Monday to Saturday\n- Hybrid working: two days a week at home after training\n\nHow to apply: [add link and what happens next]",
+"notes": [{"kind": "evidence", "text": "Salary range for the role."}, {"kind": "evidence", "text": "Shift length, Saturday pattern and how far ahead the rota is set."}, {"kind": "evidence", "text": "Length of training before hybrid working starts."}]}
+],
+"questions": [
+{"kind": "confirm", "for": "audit", "text": "Is the employer-brand guide text (\"Lift people up\", the three pillars and the call-out figures) published to candidates anywhere, or is it internal only?"},
+{"kind": "confirm", "for": "communication", "text": "Can last year's figures (11,200 call-outs; 92% of hospital entrapment calls reached within 45 minutes) be published, which year do they cover, and do you have the same figures for other years?"},
+{"kind": "confirm", "for": "communication", "text": "Was Ilse Varga's apprenticeship the programme described in \"Master your trade\"?"},
+{"kind": "confirm", "for": "communication", "text": "Does \"employer of choice\" rest on any award, survey or data? If not, remove it."},
+{"kind": "evidence", "for": "communication", "text": "What flexible working means for a field-based Lift Service Engineer with on-call one week in four."},
+{"kind": "evidence", "for": "communication", "text": "The on-call allowance amount and what a typical on-call week involves."},
+{"kind": "evidence", "for": "communication", "text": "Coordinator salary range, shift length, Saturday pattern and training length."},
+{"kind": "evidence", "for": "communication", "text": "Development and progression routes for qualified engineers and office staff, with numbers if available."},
+{"kind": "evidence", "for": "communication", "text": "Examples of how colleagues support each other beyond apprentice mentoring, for example during night call-outs."},
+{"kind": "evidence", "for": "communication", "text": "What happens after an application through the careers page, and a contact person."},
+{"kind": "evidence", "for": "audit", "text": "Apprentice vacancy or apprentice-facing material, if apprentices are a hiring audience."}
+],
+"genericity": [
+{"claim": "\"Our promise: Lift people up.\"", "verdict": "generic", "substitution": "survives", "ubiquity": "rare", "specificity": "none", "defensibility": "unowned", "why": "The wordplay fits any lift company unchanged and holds no fact about working here. It can mean lifting passengers or developing people; the guide does not say which. It uses no stock phrases, so the line could work once a specific stands behind it."},
+{"claim": "The Matter pillar: \"Our work keeps hospitals, homes and stations accessible.\" with last year's figures (11,200 call-outs; 92% of hospital entrapment calls reached within 45 minutes)", "verdict": "partial", "substitution": "breaks", "ubiquity": "common", "specificity": "high", "defensibility": "supportable", "why": "The figures tie it to you and break substitution. The careers page version, \"Work that matters to the communities we serve\", is a stock phrase with no figure. A comparable lift firm could make a similar claim with its own numbers, so it is supportable rather than owned."},
+{"claim": "\"Every apprentice is paired with a senior engineer for the whole programme and works towards a Level 3 lift engineering qualification.\"", "verdict": "partial", "substitution": "bends", "ubiquity": "common", "specificity": "high", "defensibility": "supportable", "why": "A named practice and a named qualification. Another employer could run the same programme, but would have to actually do it. The careers page version, \"Training and development from day one\", and the \"employer of choice\" line next to it are stock phrases."},
+{"claim": "\"We look out for each other. Like a family, we celebrate wins together.\"", "verdict": "generic", "substitution": "survives", "ubiquity": "ubiquitous", "specificity": "none", "defensibility": "unowned", "why": "Built from a stock phrase (\"like a family\") with no practice, number or example. Any employer could publish it unchanged."},
+{"claim": "\"Flexible working\" (careers page and engineer ad)", "verdict": "generic", "substitution": "survives", "ubiquity": "common", "specificity": "none", "defensibility": "unowned", "why": "A policy name with no content. Neither text says what it allows, and the engineer ad's schedule does not show it."}
+],
+"ledger": [
+{"claim": "Work that matters: keeping hospitals, homes and stations accessible (careers page headline and bullet; guide, Matter pillar)", "class": "core",
+"evidence": "Guide: last year your engineers answered 11,200 call-outs, and 92% of entrapment calls in hospitals were reached within 45 minutes. Careers page: around 3,400 lifts and escalators in hospitals, housing blocks, shopping centres and railway stations across the Westmere region. Engineer ad: the northern patch includes two hospitals and more than 60 residential blocks. Story: a 2am call to Westmere General, a lift stuck between floors with a patient trolley inside.",
+"strength": "moderate", "status": "partial",
+"comment": "The ad and the story tie the work to the engineer's own job, which makes this more than a company fact. The figures cover last year only, so they show what the work involved then, not current performance. Nothing ties the claim to the coordinator role."},
+{"claim": "Training and development from day one, real opportunities to grow, master your trade (careers page; guide, Master your trade; engineer ad)", "class": "core",
+"evidence": "Guide: every apprentice is paired with a senior engineer for the whole programme and works towards a Level 3 lift engineering qualification. Story: Ilse joined as an apprentice in 2019, went everywhere with her mentor for the first year, qualified in 2023 and this year started mentoring two apprentices. Coordinator ad: hybrid working starts after training, length not stated.",
+"strength": "moderate", "status": "partial",
+"comment": "A clear practice, for apprentices only. It does not show development for qualified engineers or office staff. Ilse's account is one person's route, and it is unclear whether her apprenticeship is the programme the guide describes."},
+{"claim": "A supportive, close-knit team that looks out for each other (careers page; guide, Belong pillar; coordinator ad)", "class": "core",
+"evidence": "Story: on the 2am call, her mentor Joe talked her through it on the phone. Guide: apprentices are paired with a senior engineer.",
+"strength": "weak", "status": "weak",
+"comment": "One person's example and a training practice, offered for a company-wide claim. Nothing shows how support works for qualified engineers, who work alone on most routine visits."},
+{"claim": "Flexible working (careers page bullet; engineer ad offer)", "class": "core",
+"evidence": "Coordinator ad: hybrid working, two days a week at home after training.",
+"strength": "weak", "status": "weak",
+"comment": "The only defined flexibility is for a different role. The engineer ad, which lists flexible working, gives it no content and states a fixed Monday-to-Friday week with on-call."},
+{"claim": "Competitive pay and great benefits (careers page; \"Competitive salary\" in the coordinator ad)", "class": "supporting",
+"evidence": "Engineer ad: £38,000–£44,000 plus on-call allowance; 25 days' holiday plus bank holidays; pension and health cash plan.",
+"strength": "weak", "status": "weak",
+"comment": "The engineer ad gives figures a candidate can judge, but nothing in the material shows they are competitive. The coordinator ad gives no figure."},
+{"claim": "\"We are proud to be an employer of choice for engineering talent.\" (guide)", "class": "supporting",
+"evidence": "Not found.",
+"strength": "none", "status": "none",
+"comment": "No award, survey or figure in the material."}
+]
+}</script>
+<script>
+const T = {"doc_title": "Employer brand audit", "kicker": "Employer brand audit", "date": "Date", "materials": "Materials", "score": "Employer Brand Score", "provisional": "provisional", "withheld": "Score withheld", "withheld_note": "There is too little material for an overall score: fewer than 40% of the criteria can be assessed.", "coverage": "Coverage", "coverage_hint": "the share of criteria that this material allowed us to assess", "reliability": "Score reliability", "rel": {"high": "high", "medium": "medium", "low": "low"}, "rel_hint": "whether enough different types of material were supplied for a stable score", "toc": "Contents", "sec_summary": "Executive summary", "sec_howto": "How to read this report", "sec_scorecard": "Score by dimension", "sec_working": "What works", "sec_problems": "Main problems", "sec_plan": "Plan: the three most important fixes", "sec_rewrites": "Before → after", "sec_questions": "Questions for the company", "sec_appendix": "Appendix: analysis detail", "app_genericity": "Genericity test", "app_ledger": "Claims and proof", "app_details": "Score by criterion", "app_materials": "Materials reviewed", "summary_points": "Key findings", "summary_actions": "What to do first", "band": {"85": "Distinctive and well supported. What remains is refinement.", "70": "Strong, with visible gaps that can be fixed.", "50": "Works, but reads as generic or unsupported in important places.", "30": "Weak: few specific reasons to choose the employer and little proof.", "0": "The material shows no working proposition for candidates."}, "band_scale_note": "The scale describes this methodology only. It is not a ranking or a comparison with other employers.", "dims": {"clarity": ["Clarity", "Whether it is clear at a glance what the employer offers and why someone would join."], "differentiation": ["Differentiation", "Whether the claims could be moved unchanged into another employer's copy in the same sector."], "proof": ["Proof", "Whether the claims are backed by figures, practices and examples in the material itself."], "audience_fit": ["Audience fit", "Whether it is clear who the material speaks to, and whether the conditions of different roles are covered."], "employee_truth": ["Employee voice and work reality", "Whether there are real people's stories and a description of what the work is like, difficulties included."], "consistency": ["Consistency", "Whether the materials say the same thing and do not contradict each other."], "candidate_relevance": ["Candidate questions answered", "Whether the facts needed to decide are there: pay, schedule, tasks, conditions."], "conversion": ["Path to applying", "Whether it is clear what to do next, how to apply and what happens after."]}, "not_assessable": "not assessed", "why": "Why", "rf": {"RF01": "Generic claim", "RF02": "Superlative without proof", "RF03": "Company mission instead of an offer to employees", "RF04": "About the company, not the candidate", "RF05": "Fact without a benefit for the candidate", "RF06": "Benefit without proof", "RF07": "Culture described only in adjectives", "RF08": "Unclear who it speaks to", "RF09": "One message for every role", "RF10": "No employee voice", "RF11": "The work itself is not shown", "RF12": "Promises contradict each other", "RF13": "Company size without meaning for the candidate", "RF14": "Vague growth promise", "RF15": "Innovation cliché", "RF16": "Great-team cliché", "RF17": "Perks listed instead of an offer", "RF18": "Claim goes beyond its proof", "RF19": "Unexplained internal jargon", "RF20": "No clear next step", "RF21": "Values offered as a difference without proof", "RF22": "Proof that does not bear on the decision", "RF23": "Promise missing from candidate-facing copy", "RF24": "Too polished, no real work shown"}, "effort": {"small": "small", "medium": "medium", "large": "large"}, "effort_lbl": "Effort", "who": "Who to involve", "check": "How to tell it worked", "scope_in": "What the audit covered", "scope_out": "What it did not look at", "severity": {"critical": "Critical", "high": "High priority", "medium": "Medium priority", "low": "Low priority"}, "evidence": "In the material", "why_matters": "Why it matters", "flags": "Common mistake", "fix_where": "What to do", "fix_why": "Why this priority", "fix_needs": "What it needs", "fix_ready": "Can be done with what you already have", "fix_data": "Needs new information", "rw_original": "Before", "rw_problem": "What is wrong", "rw_logic": "How it was fixed", "rw_rewrite": "After", "q_kind": {"confirm": "Confirm", "evidence": "Information needed"}, "q_for": {"audit": "To make the audit more precise", "communication": "To strengthen candidate-facing copy"}, "q_note": "Until answered, these items are not used in the conclusions and do not appear as facts in rewritten copy.", "gen_cols": ["Claim", "Result", "Substitution", "Stock phrases", "Specifics", "Can you own it", "Why"], "gen": {"verdict": {"distinctive": "Sets you apart", "partial": "Partly sets you apart", "generic": "Generic"}, "substitution": {"breaks": "Only true of you", "bends": "Mostly only you", "survives": "Fits anyone"}, "ubiquity": {"rare": "Own words", "common": "Some stock phrases", "ubiquitous": "Stock phrases"}, "specificity": {"high": "A lot", "some": "Some", "none": "None"}, "defensibility": {"owned": "Yours and proven", "supportable": "Could be supported", "unowned": "Not anchored"}}, "led_cols": ["Claim", "Weight", "Supported by", "Strength", "Result", "Comment"], "led": {"class": {"core": "Core", "supporting": "Supporting"}, "strength": {"strong": "Strong", "moderate": "Moderate", "weak": "Weak", "none": "None"}, "status": {"strong": "Supported", "partial": "Partly supported", "weak": "Weakly supported", "none": "Not supported", "conflicting": "Contradicted by the material"}}, "det_cols": ["Dimension", "Criterion", "Points", "Comment"], "mat_cols": ["Material", "Type"], "footer": "Prepared with the Employer Brand Auditor plugin. The audit assesses only the material supplied: how it reads to a candidate and what supports it. Facts about the company were not independently verified. Check rewritten copy and every figure before publishing.", "parse_error": "The report data could not be read. Ask the plugin to rebuild the HTML report.", "print": "Save as PDF", "howto_toggle": "Show or hide the explanation", "howto_html": "\n<p class=\"lead\">The audit reads candidate-facing material the way a person choosing a job reads it: the careers page, the employer value proposition (EVP), job ads, employee stories. It answers three questions: what you promise, what backs it up, and what to fix first.</p>\n<div class=\"howto-grid\">\n  <div class=\"howto-card\"><h4>The rule</h4><p>No proof in the material, no claim in the report. The audit does not invent facts, figures or market comparisons. When proof is missing from the copy, it means only that a candidate cannot see it. It does not mean the practice does not exist.</p></div>\n  <div class=\"howto-card\"><h4>Score out of 100</h4><p>The sum of the eight dimensions below. They carry different weights. Differentiation and proof weigh most, 16 points each: without them the rest stays general. Scale: 85–100 distinctive, 70–84 strong with gaps, 50–69 works but generic, 30–49 weak, below 30 no proposition visible. It is not a ranking or a comparison with other employers.</p></div>\n  <div class=\"howto-card\"><h4>Coverage</h4><p>The share of the 34 criteria that could be assessed. When material is missing, for example there is no employee story, those criteria are left out rather than scored zero, and the score is computed from the rest. Below 40% coverage no overall score is given.</p></div>\n  <div class=\"howto-card\"><h4>Score reliability</h4><p>High when coverage is at least 80% and at least three different types of material were supplied. Medium when one of these is missing. Low when there is little material; the score is then provisional. Reliability describes how complete the material is. It does not mean the facts in it were checked.</p></div>\n</div>\n<h4 class=\"howto-h\">The genericity test</h4>\n<p>Each main claim is tested with four questions.</p>\n<ul class=\"howto-list\">\n  <li><b>Substitution.</b> Replace the company's name with \"a similar employer in the same sector\". If the sentence is still true, it fits anyone. If it becomes untrue, it contains something only yours: a place, a figure, a specific practice.</li>\n  <li><b>Stock phrases.</b> Whether the sentence is built from standard phrases such as \"great team\" or \"growth opportunities\".</li>\n  <li><b>Specifics.</b> Figures with time frames, named practices, conditions, constraints.</li>\n  <li><b>Can you own it.</b> Whether the claim rests on something the company really has and the material shows.</li>\n</ul>\n<h4 class=\"howto-h\">Labels in the text</h4>\n<ul class=\"howto-list\">\n  <li><span class=\"tag tag-q\">Confirm</span> a likely fact the company needs to confirm. Until then it is not used as a fact.</li>\n  <li><span class=\"tag tag-e\">Information needed</span> the material does not contain it, and the copy cannot be strengthened without it.</li>\n  <li><b>Supported, partly, weakly, not supported</b>: how well a claim is backed inside the material itself. This is not independent fact-checking.</li>\n</ul>\n"};
+const app = document.getElementById('app');
+document.getElementById('printbtn').textContent = T.print;
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const txt = s => esc(s).replace(/\n/g, '<br>');
+const list = (a, cls) => (a && a.length) ? `<ul${cls ? ` class="${cls}"` : ''}>${a.map(x => `<li>${txt(x)}</li>`).join('')}</ul>` : '';
+const sec = (id, title, body) => body ? `<h2 id="${id}">${esc(title)}</h2>${body}` : '';
+const bandKey = v => v >= 85 ? '85' : v >= 70 ? '70' : v >= 50 ? '50' : v >= 30 ? '30' : '0';
+const chipCls = {strong:'g',partial:'m',weak:'m',none:'r',conflicting:'r',distinctive:'g',generic:'r',breaks:'g',bends:'m',survives:'r',rare:'g',common:'m',ubiquitous:'r',high:'g',some:'m',owned:'g',supportable:'m',unowned:'r'};
+const chip = (map, k) => k ? `<span class="chip ${chipCls[k] || ''}">${esc((map && map[k]) || k)}</span>` : '';
+function ring(v, max) {
+const r = 56, c = 2 * Math.PI * r, f = Math.max(0, Math.min(1, v / max));
+return `<svg viewBox="0 0 132 132"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19B6C9"/><stop offset="1" stop-color="#6B3FD4"/></linearGradient></defs>
+<circle cx="66" cy="66" r="${r}" fill="none" stroke="#EEEBF3" stroke-width="12"/>
+<circle cx="66" cy="66" r="${r}" fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c * f} ${c}" transform="rotate(-90 66 66)"/></svg>`;
+}
+function render(d) {
+const s = d.score || {};
+document.title = `${T.doc_title}: ${d.company || ''}`;
+const withheld = !!s.withheld;
+let h = '';
+// cover
+h += `<div class="cover"><div class="cover-main"><div><div class="kicker">${esc(T.kicker)}</div><h1>${esc(d.company || '')}</h1>
+<p class="verdict">${txt(d.verdict)}</p></div>
+<div class="cover-meta">${esc(T.date)}: ${esc(d.date || '')} · ${esc(T.materials)}: ${(d.materials || []).length}</div></div>
+<div class="scorebox">`;
+if (withheld) {
+h += `<div><div class="kicker">${esc(T.score)}</div><h3 style="margin-top:8px">${esc(T.withheld)}</h3><p class="band">${esc(T.withheld_note)}</p></div>`;
+} else {
+h += `<div class="ring">${ring(s.value || 0, 100)}<div><div class="num">${esc(s.value)}<small>/100</small></div>
+${s.provisional ? `<span class="pill prov">${esc(T.provisional)}</span>` : ''}</div></div>
+<p class="band">${esc(T.band[bandKey(s.value || 0)])}</p>`;
+}
+h += `<div class="metric"><div>${esc(T.coverage)}<span class="h">${esc(T.coverage_hint)}</span></div><b>${esc(s.coverage)}%</b></div>
+<div class="metric"><div>${esc(T.reliability)}<span class="h">${esc(T.rel_hint)}${s.reliability_note ? ': ' + esc(s.reliability_note) : ''}</span></div><b>${esc(T.rel[s.confidence] || s.confidence || '')}</b></div>
+</div></div>`;
+const toc = [['summary', T.sec_summary], ['howto', T.sec_howto], ['scorecard', T.sec_scorecard], ['working', T.sec_working], ['problems', T.sec_problems], ['plan', T.sec_plan], ['rewrites', T.sec_rewrites], ['questions', T.sec_questions], ['appendix', T.sec_appendix]];
+h += `<nav class="toc">${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join('')}</nav>`;
+(d.notices || []).forEach(n => { h += `<div class="notice">${txt(n)}</div>`; });
+const sc = d.scope || {};
+if ((sc.reviewed || []).length || (sc.not_reviewed || []).length) {
+h += `<div class="scope"><div><h4>${esc(T.scope_in)}</h4>${list(sc.reviewed)}</div><div><h4>${esc(T.scope_out)}</h4>${list(sc.not_reviewed)}</div></div>`;
+}
+// summary
+const sm = d.summary || {};
+h += sec('summary', T.sec_summary, `<div class="summary"><div class="panel"><h3>${esc(T.summary_points)}</h3>${list(sm.points)}</div>
+<div class="panel"><h3>${esc(T.summary_actions)}</h3>${list(sm.actions, 'actions')}</div></div>`);
+// how to read (fixed text)
+h += sec('howto', T.sec_howto, `<details class="howto" open><summary>${esc(T.howto_toggle)}</summary>${T.howto_html}<p class="muted">${esc(T.band_scale_note)}</p></details>`);
+// scorecard
+if ((d.dimensions || []).length) {
+h += sec('scorecard', T.sec_scorecard, `<div class="panel">${d.dimensions.map(x => {
+const meta = T.dims[x.id] || [x.id, ''];
+const na = x.assessable === false;
+const pct = na ? 0 : Math.round(100 * (x.score || 0) / (x.max || 1));
+return `<div class="dim"><div><div class="name">${esc(meta[0])}</div><div class="desc">${esc(meta[1])}</div></div>
+<div><div class="bar"><i style="width:${pct}%"></i></div><div class="why">${txt(x.why)}</div></div>
+<div class="pts">${na ? `<small>${esc(T.not_assessable)}</small>` : `${esc(x.score)}<small>/${esc(x.max)}</small>`}</div></div>`;
+}).join('')}</div>`);
+}
+// what works
+h += sec('working', T.sec_working, (d.strengths || []).length ? `<div class="cards">${d.strengths.map(x => `<div class="card good"><h3>${esc(x.title)}</h3><p>${txt(x.text)}</p></div>`).join('')}</div>` : '');
+// problems
+h += sec('problems', T.sec_problems, (d.problems || []).length ? `<div class="cards">${d.problems.map(x => `<div class="card sev-${esc(x.severity)}">
+<div class="sev">${esc(T.severity[x.severity] || '')}</div><h3>${esc(x.title)}</h3>
+${(x.evidence || []).length ? `<div class="lbl">${esc(T.evidence)}</div>${x.evidence.map(e => `<blockquote>${txt(e)}</blockquote>`).join('')}` : ''}
+${x.why ? `<div class="lbl">${esc(T.why_matters)}</div><p>${txt(x.why)}</p>` : ''}
+${(x.flags || []).length ? `<div class="lbl">${esc(T.flags)}</div><p class="muted">${x.flags.map(f => esc((T.rf && T.rf[f]) || f)).join(' · ')}</p>` : ''}</div>`).join('')}</div>` : '');
+// plan
+h += sec('plan', T.sec_plan, (d.fixes || []).length ? `<div class="cards fixes">${d.fixes.map(x => `<div class="card fix"><h3>${esc(x.title)}</h3>
+<span class="effort ${x.needs_new_data ? 'data' : ''}">${esc(x.needs_new_data ? T.fix_data : T.fix_ready)}</span>
+<div class="lbl">${esc(T.fix_where)}</div>${list(x.steps)}
+${x.why_first ? `<div class="lbl">${esc(T.fix_why)}</div><p>${txt(x.why_first)}</p>` : ''}
+${(x.needs || []).length ? `<div class="lbl">${esc(T.fix_needs)}</div>${list(x.needs)}` : ''}
+${x.effort ? `<div class="lbl">${esc(T.effort_lbl)}</div><p>${esc(T.effort[x.effort] || x.effort)}${x.effort_note ? '. ' + txt(x.effort_note) : ''}</p>` : ''}
+${(x.who || []).length ? `<div class="lbl">${esc(T.who)}</div><p>${x.who.map(esc).join(', ')}</p>` : ''}
+${(x.check || []).length ? `<div class="lbl">${esc(T.check)}</div>${list(x.check)}` : ''}</div>`).join('')}</div>` : '');
+// rewrites
+h += sec('rewrites', T.sec_rewrites, (d.rewrites || []).length ? `<div class="cards">${d.rewrites.map(x => `<div class="card"><h3>${esc(x.title)}</h3>
+${x.problem ? `<div class="lbl">${esc(T.rw_problem)}</div><p>${txt(x.problem)}</p>` : ''}
+${x.logic ? `<div class="lbl">${esc(T.rw_logic)}</div><p>${txt(x.logic)}</p>` : ''}
+<div class="rw"><div><div class="lbl">${esc(T.rw_original)}</div><div class="before">${txt(x.original)}</div></div>
+<div><div class="lbl">${esc(T.rw_rewrite)}</div><div class="after">${txt(x.rewrite)}</div></div></div>
+${(x.notes || []).length ? `<ul class="qlist">${x.notes.map(n => `<li><span class="tag ${n.kind === 'confirm' ? 'tag-q' : 'tag-e'}">${esc(T.q_kind[n.kind] || n.kind)}</span>${txt(n.text)}</li>`).join('')}</ul>` : ''}</div>`).join('')}</div>` : '');
+// questions
+const qs = d.questions || [];
+if (qs.length) {
+const grp = k => qs.filter(q => (q.for || 'communication') === k);
+const qhtml = ['communication', 'audit'].map(k => grp(k).length ? `<h3 style="margin:18px 0 6px">${esc(T.q_for[k])}</h3><ul class="qlist">${grp(k).map(q => `<li><span class="tag ${q.kind === 'confirm' ? 'tag-q' : 'tag-e'}">${esc(T.q_kind[q.kind] || q.kind)}</span>${txt(q.text)}</li>`).join('')}</ul>` : '').join('');
+h += sec('questions', T.sec_questions, `<p class="muted">${esc(T.q_note)}</p>${qhtml}`);
+}
+// appendix
+let app2 = '';
+if ((d.genericity || []).length) {
+app2 += `<h3>${esc(T.app_genericity)}</h3><div class="tblwrap"><table><tr>${T.gen_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.genericity.map(g => `<tr>
+<td>${txt(g.claim)}</td><td>${chip(T.gen.verdict, g.verdict)}</td><td>${chip(T.gen.substitution, g.substitution)}</td><td>${chip(T.gen.ubiquity, g.ubiquity)}</td>
+<td>${chip(T.gen.specificity, g.specificity)}</td><td>${chip(T.gen.defensibility, g.defensibility)}</td><td>${txt(g.why)}</td></tr>`).join('')}</table></div>`;
+}
+if ((d.ledger || []).length) {
+app2 += `<h3>${esc(T.app_ledger)}</h3><div class="tblwrap"><table><tr>${T.led_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.ledger.map(l => `<tr>
+<td>${txt(l.claim)}</td><td>${esc(T.led.class[l.class] || '')}</td><td>${txt(l.evidence)}</td><td>${chip(T.led.strength, l.strength)}</td>
+<td>${chip(T.led.status, l.status)}</td><td>${txt(l.comment)}</td></tr>`).join('')}</table></div>`;
+}
+const det = (d.dimensions || []).flatMap(x => (x.criteria || []).map(c => [x.id, c]));
+if (det.length) {
+app2 += `<h3>${esc(T.app_details)}</h3><div class="tblwrap"><table><tr>${T.det_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${det.map(([id, c]) => `<tr>
+<td>${esc((T.dims[id] || [id])[0])}</td><td>${esc(c.name)}</td><td>${c.assessable === false ? esc(T.not_assessable) : `${esc(c.score)}/${esc(c.max)}`}</td><td>${txt(c.note)}</td></tr>`).join('')}</table></div>`;
+}
+if ((d.materials || []).length) {
+app2 += `<h3>${esc(T.app_materials)}</h3><div class="tblwrap"><table><tr>${T.mat_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.materials.map(m => `<tr><td>${esc(m.name)}</td><td>${esc(m.type)}</td></tr>`).join('')}</table></div>`;
+}
+h += sec('appendix', T.sec_appendix, app2);
+h += `<footer>${esc(T.footer)}${d.plugin_version ? ` · Employer Brand Auditor v${esc(d.plugin_version)}` : ''}</footer>`;
+app.innerHTML = h;
+}
+try {
+render(JSON.parse(document.getElementById('report-data').textContent));
+} catch (e) {
+app.innerHTML = `<div class="notice">${esc(T.parse_error)}</div>`;
+console.error(e);
+}
+</script>
+</body>
+</html>
