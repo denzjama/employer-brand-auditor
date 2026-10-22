@@ -54,7 +54,7 @@ Search for and fetch candidate-facing material that the employer itself publishe
 **Rules:**
 - **Search results only locate pages.** A result title or snippet is never evidence. Only fetched page text is.
 - **Fetch each page from its own address and keep its words.**
-  - **Preferred: the fetch script.** When a shell is available, run `python3 <skill directory>/scripts/fetch_page.py <url>` from the `employer-brand-audit` skill.
+  - **Preferred: the fetch script.** When a shell is available, run `python3 <absolute skill directory>/scripts/fetch_page.py <url>` from the `employer-brand-audit` skill, as a single command per page with no `cd`, `&&` or pipes.
     - It loads the page through the user's own connection and returns the page's visible text verbatim, as JSON.
     - It also names the problem when a page cannot be read (section 3a).
     - Save `text` as the captured text. If `ok` is false, record the page as unavailable with the reason.

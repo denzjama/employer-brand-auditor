@@ -89,7 +89,7 @@ All prose fields are reader-facing text in the report language and follow sectio
   "lang": "ru" | "en",
   "company": "Employer name as given in the material, or a neutral description",
   "date": "YYYY-MM-DD",
-  "plugin_version": "0.2.0",
+  "plugin_version": "the version in .claude-plugin/plugin.json, e.g. 0.3.1",
   "score": {
     "value": 0-100 integer, omitted when withheld,
     "provisional": true | false,

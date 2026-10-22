@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.1
+
+- The page-fetch script is now called as one plain command per page, so a single `python3` permission covers every fetch and the plugin no longer falls back to the paraphrasing page tool when other shell commands are refused.
+- The report records the actual plugin version.
+
 ## v0.3.0
 
 - **Audit a company by name.** "Audit the employer brand of <company>" with no files: the auditor finds the company's public careers site, current job ads, employee stories and hiring-process pages, saves them as a source pack and audits them.

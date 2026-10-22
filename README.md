@@ -3,7 +3,7 @@
 **Find out which of your employer-brand claims a candidate would actually believe.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.3.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.3.1-informational.svg)](CHANGELOG.md)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757.svg)](docs/INSTALL.md)
 
 Employer Brand Auditor is a Claude Code plugin that audits careers pages, EVPs, job ads and employee stories through a candidate's eyes. It scores what your material **proves**, not what it promises. It shows where your copy sounds like everyone else's, tells you what to fix first, and hands you a **ready-to-share HTML report** that explains its own method.
@@ -148,6 +148,6 @@ It works on the material you give it, or on the company's own public pages that 
 
 ## Status and licence
 
-**v0.3.0.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
+**v0.3.1.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
 
 Licensed under the [MIT License](LICENSE).
