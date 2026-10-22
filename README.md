@@ -32,7 +32,7 @@ Other ways to install, plus update and uninstall: [`docs/INSTALL.md`](docs/INSTA
 
 A short summary in the chat and an HTML report in your folder. The report opens in any browser and saves as a PDF with one button.
 
-![The top of an audit report: score, coverage, reliability, audit scope and the executive summary](docs/images/report-preview.png)
+![The top of an audit report: score, coverage, reliability, audit scope and the executive summary](docs/images/report-preview.jpg)
 
 The excerpts below come from a real run on a **fictional** lift-maintenance company and are not edited. The full chat reply, the report, the inputs and the prompt are in [`demo/`](demo/README.md).
 
