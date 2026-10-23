@@ -58,6 +58,15 @@ Coverage is the share of the method's 34 criteria that your material allowed the
 
 If you supplied the material, the audit covers exactly that. If you named a company, the auditor collected the company's own public candidate-facing pages on the date shown, saved them in a `sources-…` folder, and lists every page with its link in the report's appendix. "Not found in public sources" means the search did not find that kind of page; it does not mean the company has none.
 
+### Quick and deep audits
+
+A quick audit reads the main careers pages, a few job ads, a story and the hiring process. A deep audit adds:
+- **a source map** in the appendix: every source found, with the decision (used, excluded, unavailable, manual import) and the reason;
+- **a social-media section:** one row per official account read, with the sample, posting rhythm, the share of posts about people and work, and the themes;
+- **"Promise and perception":** what the company promises next to what public employee reviews say about the same topics.
+
+Reviews are opinions of self-selected people. They are reported as "N of M reviews mention…", they never change the score, and no reviewer can be identified.
+
 ### What the audit covered
 
 Under the cover, the report lists what was reviewed and what was not: for example social media, review sites, the interview process, or what employees say outside official channels. Conclusions apply only to what was reviewed.

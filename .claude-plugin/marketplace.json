@@ -10,7 +10,7 @@
     {
       "name": "employer-brand-auditor",
       "source": "./",
-      "version": "0.3.1",
+      "version": "0.4.0",
       "description": "Evidence-first audits for employer brands, EVP, careers content, job ads, and talent marketing."
     }
   ]

@@ -74,6 +74,22 @@
     Trusting a root certificate is your decision: it lets that authority vouch for any site the plugin opens.
   - The plugin never turns certificate checks off and never tries to get around a block or a captcha. If a site stays closed, paste its text into the chat.
 
+## VK communities are listed as "manual import"
+
+- **Why it happens:** VK shows community walls only through its official API, which needs a key.
+- **What to do:** create a VK app at vk.com/apps?act=manage, open its settings and copy the **service token**. Save it in a file:
+
+  ```bash
+  mkdir -p ~/.eb-auditor
+  ```
+
+  then put the token as the only line of `~/.eb-auditor/vk-token`. The token only reads public data. Run the audit again.
+
+## Instagram, TikTok or LinkedIn are listed as "manual import"
+
+- **Why it happens:** these platforms require a login or block automated access, and the plugin never gets around that.
+- **What to do:** open the links listed in the report's "What to add for the full picture", take the screenshots it lists, put them in a `social/` folder in your working folder (one subfolder per platform is fine), and ask: "Update the audit, screenshots are in social/."
+
 ## The auditor did not find the company's pages
 
 - **Symptom:** you named a company and the reply says nothing usable was found, or the report has low coverage.

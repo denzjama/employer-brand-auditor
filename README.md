@@ -3,7 +3,7 @@
 **Find out which of your employer-brand claims a candidate would actually believe.**
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.3.1-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.4.0-informational.svg)](CHANGELOG.md)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-d97757.svg)](docs/INSTALL.md)
 
 Employer Brand Auditor is a Claude Code plugin that audits careers pages, EVPs, job ads and employee stories through a candidate's eyes. It scores what your material **proves**, not what it promises. It shows where your copy sounds like everyone else's, tells you what to fix first, and hands you a **ready-to-share HTML report** that explains its own method.
@@ -26,7 +26,13 @@ Start a new Claude Code session and name a company:
 Audit the employer brand of <company name>.
 ```
 
-The auditor finds its public careers site, job ads and employee stories, saves them as a source pack and audits them. To audit your own drafts or internal material instead, put them in a folder:
+The auditor finds its public careers site, job ads and employee stories, saves them as a source pack and audits them. For a study you may have to defend, ask for a **deep audit**:
+
+```text
+Run a deep audit of <company name>'s employer brand, with social media and reviews.
+```
+
+It maps the whole careers site, selects sources critically and records why each was used or left out, reads the company's official Telegram, YouTube and VK channels, and adds a separate "promise and perception" section from public employee reviews. Closed networks such as Instagram, TikTok or LinkedIn are never scraped: the report lists the official accounts and what to screenshot, and includes the screenshots you add. To audit your own drafts or internal material instead, put them in a folder:
 
 ```text
 Run a full employer brand audit. Our candidate-facing materials are in materials/.
@@ -100,7 +106,7 @@ It works in a fixed order: **DIAGNOSE → EXPLAIN → PRIORITIZE → IMPROVE.** 
 - **Every score shows its basis.** Coverage tells you how much of the scorecard your material could support. With thin material, the score is marked provisional. Below 40% coverage, it is withheld.
 - **No made-up benchmarks.** The score is measured against the method, not against competitors. The plugin has no market data and says so.
 - **Your material is data, not instructions.** Instructions hidden inside a pasted page are reported and ignored.
-- **Tested before release.** It was checked against 108 behavioural test cases and in a real-world pilot on public materials from eleven employers. Known limitations are listed openly in [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
+- **Tested before release.** It was checked against 116 behavioural test cases and in a real-world pilot on public materials from eleven employers. Known limitations are listed openly in [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
 
 ## Who it is for
 
@@ -133,7 +139,7 @@ It works on the material you give it, or on the company's own public pages that 
 | [`docs/INSTALL.md`](docs/INSTALL.md) · [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | Install, update, uninstall; common problems |
 | [`demo/`](demo/README.md) | A full worked example, unedited: chat reply and HTML report |
 | [`methodology/`](methodology/) | The full method the skills follow |
-| [`RELEASE_NOTES_v0.3.0.md`](RELEASE_NOTES_v0.3.0.md) · [`CHANGELOG.md`](CHANGELOG.md) | What is in this release |
+| [`RELEASE_NOTES_v0.4.0.md`](RELEASE_NOTES_v0.4.0.md) · [`CHANGELOG.md`](CHANGELOG.md) | What is in this release |
 
 ## На русском
 
@@ -144,10 +150,10 @@ It works on the material you give it, or on the company's own public pages that 
 
 Главное правило: **нет доказательства — нет утверждения**. Плагин не выдумывает факты, цифры и цитаты. Отсутствие доказательства в материалах он не выдаёт за отсутствие практики в компании.
 
-Установка — две команды из раздела [Install](#install). Дальше достаточно написать: «Проаудируй HR-бренд компании <название>». Плагин сам найдёт карьерный сайт, вакансии и истории сотрудников, сохранит их и проведёт аудит. Свои черновики можно положить в папку и написать: «Проведи полный аудит HR-бренда, материалы лежат в папке materials/». В чате придёт короткая сводка, а в папке появится HTML-отчёт с разделом «Как читать этот отчёт», планом действий и списком вопросов к компании. Отчёт и все метки будут на русском, его можно сохранить в PDF.
+Установка — две команды из раздела [Install](#install). Дальше достаточно написать: «Проаудируй HR-бренд компании <название>». Для подробного исследования: «Сделай глубокий аудит HR-бренда компании <название>, с соцсетями и отзывами». Тогда плагин составит карту всего карьерного сайта, прочитает официальные Telegram, YouTube и VK компании и добавит раздел «Обещание и восприятие» по отзывам сотрудников; закрытые соцсети он не скачивает, а подсказывает, что заскринить. Плагин сам найдёт карьерный сайт, вакансии и истории сотрудников, сохранит их и проведёт аудит. Свои черновики можно положить в папку и написать: «Проведи полный аудит HR-бренда, материалы лежат в папке materials/». В чате придёт короткая сводка, а в папке появится HTML-отчёт с разделом «Как читать этот отчёт», планом действий и списком вопросов к компании. Отчёт и все метки будут на русском, его можно сохранить в PDF.
 
 ## Status and licence
 
-**v0.3.1.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
+**v0.4.0.** Review rewritten copy, and verify any factual claim, before you publish it. Feedback and issues are welcome.
 
 Licensed under the [MIT License](LICENSE).

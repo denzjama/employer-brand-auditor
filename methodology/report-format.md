@@ -102,6 +102,15 @@ All prose fields are reader-facing text in the report language and follow sectio
   "notices": ["optional notices shown under the cover, e.g. the embedded-instruction notice"],
   "materials": [{"name": "Careers page", "type": "plain type name, e.g. 'Job ad'"}],
   "sources": [{"title": "page title", "url": "https://…", "type": "plain type name", "captured": "YYYY-MM-DD"}],
+  "source_map": [{"source": "plain name, or a group such as '401 job ads in the careers sitemap'", "url": "https://…", "kind": "plain kind", "decision": code "included" | "excluded" | "unavailable" | "manual", "reason": "plain reason"}],
+  "social": [{"platform": "Telegram", "account": "@name", "url": "https://…", "purpose": "plain", "sample": "N posts, period", "rhythm": "posts per month in the sample", "people_share": "N of M posts", "themes": ["…"], "notes": "…"}],
+  "perception": {
+    "sample": [{"platform": "…", "reviews": N, "period": "…", "rating": "as shown on the platform, with date and review count"}],
+    "thin": true | false,
+    "themes": [{"theme": "…", "mentions": N, "of": M, "tone": code "positive" | "negative" | "mixed", "promise": "the related employer promise, or empty", "match": code "consistent" | "mixed" | "tension" | "not_addressed", "note": "…"}],
+    "caveat": "optional extra caveat"
+  },
+  "manual_import": [{"platform": "Instagram", "url": "https://…", "capture": ["what to screenshot"]}],
   "scope": {
     "reviewed": ["what the audit covered, e.g. 'five texts supplied by you: careers page, EVP, two job ads, one employee story'"],
     "not_reviewed": ["candidate-facing channels that were not supplied, e.g. social media, review sites, the interview process, what employees say outside official channels"]
@@ -193,6 +202,8 @@ All prose fields are reader-facing text in the report language and follow sectio
 | STRONGLY / PARTIALLY / WEAKLY SUPPORTED / UNSUPPORTED / CONFLICTING | `strong` / `partial` / `weak` / `none` / `conflicting` |
 | CONFIRM / EVIDENCE NEEDED | `confirm` / `evidence` |
 | Red flag RF01–RF24 | `RF01` … `RF24` in `problems[].flags` |
+| Source decision | `included` / `excluded` / `unavailable` / `manual` |
+| Review theme tone and match | `positive` / `negative` / `mixed`; `consistent` / `mixed` / `tension` / `not_addressed` |
 | Fix effort | `small` (rewording with facts already in the material) / `medium` (needs one or two new facts or a person's input) / `large` (needs new information gathered across the company or new content such as stories) |
 
 The template turns these codes into reader-facing labels with explanations. For example, `survives` is shown as "fits anyone" and `confirm` as "Confirm".
@@ -207,11 +218,14 @@ The template renders the following, in this order.
 3. **How to read this report:** fixed text supplied by the template. Do not restate it in the data.
 4. **Score by dimension:** a bar for each of the eight dimensions with its plain description, the score and the reason.
 5. **What works.**
-6. **Main problems.** Red flags are folded into the problems as "common mistake" names; there is no separate red-flag section.
+6. **Main problems.**
+6a. **Social media** and **Promise and perception** (deep mode): one row per official account analysed; the review layer with its sample, caveat and themes. Reviews never enter the score (`source-collection.md` §7). Red flags are folded into the problems as "common mistake" names; there is no separate red-flag section.
 7. **Plan:** the three most important fixes, each marked as possible with existing material or as needing new information.
 8. **Before → after.**
 9. **Questions for the company:** every CONFIRM and EVIDENCE NEEDED item in one checklist, grouped by purpose.
+9a. **What to add for the full picture** (when `manual_import` is not empty): the closed-platform accounts and what to capture.
 10. **Appendix:**
+    - the source map (deep mode): every source found, its decision and the reason;
     - the sources, when material was collected from the web: title, type, capture date and a link for each page;
     - the genericity test table;
     - the claims-and-proof table;

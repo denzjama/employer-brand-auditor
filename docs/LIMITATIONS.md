@@ -13,6 +13,10 @@ These are deliberate choices, not defects.
 - **No memory between sessions.**
 - **Collection from the web is a snapshot.** When you name a company, the auditor collects its public candidate-facing pages on that day. Search can miss pages, some sites block automatic reading, and pages change. Types of material it could not find are left out of the score and listed in the report. Quotations are checked against the captured text, which is saved in the source pack.
 - **How pages are read.** With a shell available, the plugin reads pages itself through your connection and keeps their exact wording. Without it, it uses Claude's page-reading tool, which can return part of a page as a paraphrase; the report says when this happened, and only exact wording is quoted.
+- **Closed social networks are not collected automatically.** Instagram, Facebook, TikTok, X, LinkedIn company pages and Glassdoor require a login or block automated access, and their terms forbid it. The plugin lists the official accounts and what to screenshot; it audits screenshots you add to `social/`.
+- **VK needs your own key.** VK community walls are read only through its official API with a service token you create (see [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md)).
+- **YouTube:** only the latest 15 videos' titles and descriptions are read; videos are not watched.
+- **Reviews are a perception layer, not facts.** They show what reviewers say, over the sample read; they never change the score.
 - **Regional blocks and certificates.** Some Russian sites refuse VPN or foreign connections, and some use certificates that are not trusted outside Russia. The plugin never bypasses either; see [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) for how to open them.
 - **The HTML report is for the full audit.** EVP stress tests and single-asset reviews reply in the chat.
 - **A full audit with its report takes longer and costs more** than a chat-only answer, typically several minutes, because the report file is written in full. Ask for the audit "here in the chat" if you do not need the file.

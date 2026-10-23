@@ -18,6 +18,17 @@ Audit the employer brand of <company name>, the <industry> company in <country o
 
 In Russian: `Проаудируй HR-бренд компании <название>.` The auditor saves what it found as a source pack in your folder and lists every page in the report.
 
+**Deep audit**
+```text
+Run a deep audit of <company name>'s employer brand, with social media and reviews.
+```
+In Russian: `Сделай глубокий аудит HR-бренда компании <название>, с соцсетями и отзывами.`
+
+**Adding closed social networks**
+```text
+Update the audit: I put screenshots of the company's Instagram and LinkedIn in social/.
+```
+
 ---
 
 ## Full employer brand audit

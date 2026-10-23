@@ -44,6 +44,22 @@ I18N = {
         "sec_plan": "План: три главных исправления",
         "sec_rewrites": "Было → стало",
         "sec_questions": "Вопросы к компании",
+        "sec_social": "Соцсети",
+        "sec_perception": "Обещание и восприятие",
+        "sec_manual": "Что добавить для полной картины",
+        "manual_note": "Эти аккаунты официальные, но закрыты для автоматического сбора. Сохраните скриншоты в папку social/ и попросите плагин обновить аудит.",
+        "manual_capture": "Что сохранить",
+        "soc_cols": ["Платформа", "Аккаунт", "Назначение", "Выборка", "Ритм", "Посты о людях и работе", "Темы и наблюдения"],
+        "per_note": "Отзывы показывают, как компанию видят со стороны. В оценку из 100 баллов они не входят. Это мнения отдельных людей, а не факты о компании; пишут их сами желающие, поэтому сильные мнения встречаются чаще.",
+        "per_sample": "Выборка",
+        "per_sample_cols": ["Платформа", "Отзывов прочитано", "Период", "Рейтинг на платформе"],
+        "per_cols": ["Тема", "Упоминаний", "Тон", "Что обещает компания", "Совпадение", "Комментарий"],
+        "per_thin": "Отзывов мало, поэтому темы приведены без подсчёта.",
+        "tone": {"positive": "скорее положительный", "negative": "скорее отрицательный", "mixed": "смешанный"},
+        "match": {"consistent": "совпадает", "mixed": "частично", "tension": "расходится", "not_addressed": "компания об этом не говорит"},
+        "app_map": "Карта источников: что нашли и что взяли в анализ",
+        "map_cols": ["Источник", "Тип", "Решение", "Причина"],
+        "decision": {"included": "взято", "excluded": "исключено", "unavailable": "недоступно", "manual": "ручной импорт"},
         "sec_appendix": "Приложение: детали анализа",
         "app_genericity": "Тест на шаблонность",
         "app_ledger": "Обещания и доказательства",
@@ -164,6 +180,22 @@ I18N = {
         "sec_plan": "Plan: the three most important fixes",
         "sec_rewrites": "Before → after",
         "sec_questions": "Questions for the company",
+        "sec_social": "Social media",
+        "sec_perception": "Promise and perception",
+        "sec_manual": "What to add for the full picture",
+        "manual_note": "These accounts are official but closed to automatic collection. Save screenshots in a social/ folder and ask the plugin to update the audit.",
+        "manual_capture": "What to capture",
+        "soc_cols": ["Platform", "Account", "Purpose", "Sample", "Rhythm", "Posts about people and work", "Themes and observations"],
+        "per_note": "Reviews show how the company is seen from outside. They are not part of the 100-point score. They are individual opinions, not facts about the company; reviewers select themselves, so strong opinions are over-represented.",
+        "per_sample": "Sample",
+        "per_sample_cols": ["Platform", "Reviews read", "Period", "Rating shown on the platform"],
+        "per_cols": ["Theme", "Mentions", "Tone", "What the company promises", "Match", "Comment"],
+        "per_thin": "There are few reviews, so themes are listed without counts.",
+        "tone": {"positive": "mostly positive", "negative": "mostly negative", "mixed": "mixed"},
+        "match": {"consistent": "consistent", "mixed": "partly", "tension": "in tension", "not_addressed": "not addressed by the company"},
+        "app_map": "Source map: what was found and what was used",
+        "map_cols": ["Source", "Type", "Decision", "Reason"],
+        "decision": {"included": "used", "excluded": "excluded", "unavailable": "unavailable", "manual": "manual import"},
         "sec_appendix": "Appendix: analysis detail",
         "app_genericity": "Genericity test",
         "app_ledger": "Claims and proof",
@@ -394,7 +426,7 @@ const txt = s => esc(s).replace(/\n/g, '<br>');
 const list = (a, cls) => (a && a.length) ? `<ul${cls ? ` class="${cls}"` : ''}>${a.map(x => `<li>${txt(x)}</li>`).join('')}</ul>` : '';
 const sec = (id, title, body) => body ? `<h2 id="${id}">${esc(title)}</h2>${body}` : '';
 const bandKey = v => v >= 85 ? '85' : v >= 70 ? '70' : v >= 50 ? '50' : v >= 30 ? '30' : '0';
-const chipCls = {strong:'g',partial:'m',weak:'m',none:'r',conflicting:'r',distinctive:'g',generic:'r',breaks:'g',bends:'m',survives:'r',rare:'g',common:'m',ubiquitous:'r',high:'g',some:'m',owned:'g',supportable:'m',unowned:'r'};
+const chipCls = {mixed:'m',included:'g',excluded:'',unavailable:'r',manual:'m',consistent:'g',tension:'r',not_addressed:'',positive:'g',negative:'r',strong:'g',partial:'m',weak:'m',none:'r',conflicting:'r',distinctive:'g',generic:'r',breaks:'g',bends:'m',survives:'r',rare:'g',common:'m',ubiquitous:'r',high:'g',some:'m',owned:'g',supportable:'m',unowned:'r'};
 const chip = (map, k) => k ? `<span class="chip ${chipCls[k] || ''}">${esc((map && map[k]) || k)}</span>` : '';
 
 function ring(v, max) {
@@ -403,6 +435,8 @@ function ring(v, max) {
   <circle cx="66" cy="66" r="${r}" fill="none" stroke="#EEEBF3" stroke-width="12"/>
   <circle cx="66" cy="66" r="${r}" fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c * f} ${c}" transform="rotate(-90 66 66)"/></svg>`;
 }
+
+const safeUrl = u => /^https?:\/\//i.test(String(u || '')) ? esc(u) : '';
 
 function render(d) {
   const s = d.score || {};
@@ -424,7 +458,12 @@ function render(d) {
   h += `<div class="metric"><div>${esc(T.coverage)}<span class="h">${esc(T.coverage_hint)}</span></div><b>${esc(s.coverage)}%</b></div>
     <div class="metric"><div>${esc(T.reliability)}<span class="h">${esc(T.rel_hint)}${s.reliability_note ? ': ' + esc(s.reliability_note) : ''}</span></div><b>${esc(T.rel[s.confidence] || s.confidence || '')}</b></div>
     </div></div>`;
-  const toc = [['summary', T.sec_summary], ['howto', T.sec_howto], ['scorecard', T.sec_scorecard], ['working', T.sec_working], ['problems', T.sec_problems], ['plan', T.sec_plan], ['rewrites', T.sec_rewrites], ['questions', T.sec_questions], ['appendix', T.sec_appendix]];
+  const toc = [['summary', T.sec_summary], ['howto', T.sec_howto], ['scorecard', T.sec_scorecard], ['working', T.sec_working], ['problems', T.sec_problems]]
+    .concat((d.social || []).length ? [['social', T.sec_social]] : [])
+    .concat(d.perception && (d.perception.themes || []).length ? [['perception', T.sec_perception]] : [])
+    .concat([['plan', T.sec_plan], ['rewrites', T.sec_rewrites], ['questions', T.sec_questions]])
+    .concat((d.manual_import || []).length ? [['manual', T.sec_manual]] : [])
+    .concat([['appendix', T.sec_appendix]]);
   h += `<nav class="toc">${toc.map(([id, t]) => `<a href="#${id}">${esc(t)}</a>`).join('')}</nav>`;
   (d.notices || []).forEach(n => { h += `<div class="notice">${txt(n)}</div>`; });
   const sc = d.scope || {};
@@ -456,6 +495,28 @@ function render(d) {
       ${(x.evidence || []).length ? `<div class="lbl">${esc(T.evidence)}</div>${x.evidence.map(e => `<blockquote>${txt(e)}</blockquote>`).join('')}` : ''}
       ${x.why ? `<div class="lbl">${esc(T.why_matters)}</div><p>${txt(x.why)}</p>` : ''}
       ${(x.flags || []).length ? `<div class="lbl">${esc(T.flags)}</div><p class="muted">${x.flags.map(f => esc((T.rf && T.rf[f]) || f)).join(' · ')}</p>` : ''}</div>`).join('')}</div>` : '');
+  // social media
+  if ((d.social || []).length) {
+    h += sec('social', T.sec_social, `<div class="tblwrap"><table><tr>${T.soc_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.social.map(x => `<tr>
+      <td>${esc(x.platform)}</td><td>${safeUrl(x.url) ? `<a href="${safeUrl(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.account || x.url)}</a>` : esc(x.account)}</td>
+      <td>${txt(x.purpose)}</td><td>${txt(x.sample)}</td><td>${txt(x.rhythm)}</td><td>${txt(x.people_share)}</td>
+      <td>${(x.themes || []).length ? list(x.themes) : ''}${x.notes ? `<p class="muted">${txt(x.notes)}</p>` : ''}</td></tr>`).join('')}</table></div>`);
+  }
+  // perception layer (reviews), never part of the score
+  const pr = d.perception || {};
+  if ((pr.themes || []).length || (pr.sample || []).length) {
+    let ph = `<div class="notice">${esc(T.per_note)}${pr.caveat ? ' ' + txt(pr.caveat) : ''}</div>`;
+    if ((pr.sample || []).length) {
+      ph += `<h3>${esc(T.per_sample)}</h3><div class="tblwrap"><table><tr>${T.per_sample_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${pr.sample.map(x => `<tr><td>${esc(x.platform)}</td><td>${esc(x.reviews)}</td><td>${esc(x.period)}</td><td>${txt(x.rating)}</td></tr>`).join('')}</table></div>`;
+    }
+    if (pr.thin) ph += `<p class="muted">${esc(T.per_thin)}</p>`;
+    if ((pr.themes || []).length) {
+      ph += `<div class="tblwrap"><table><tr>${T.per_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${pr.themes.map(x => `<tr>
+        <td><b>${esc(x.theme)}</b></td><td>${pr.thin || x.mentions == null ? '' : esc(x.mentions) + (x.of ? ' / ' + esc(x.of) : '')}</td>
+        <td>${chip(T.tone, x.tone)}</td><td>${txt(x.promise)}</td><td>${chip(T.match, x.match)}</td><td>${txt(x.note)}</td></tr>`).join('')}</table></div>`;
+    }
+    h += sec('perception', T.sec_perception, ph);
+  }
   // plan
   h += sec('plan', T.sec_plan, (d.fixes || []).length ? `<div class="cards fixes">${d.fixes.map(x => `<div class="card fix"><h3>${esc(x.title)}</h3>
       <span class="effort ${x.needs_new_data ? 'data' : ''}">${esc(x.needs_new_data ? T.fix_data : T.fix_ready)}</span>
@@ -479,8 +540,19 @@ function render(d) {
     const qhtml = ['communication', 'audit'].map(k => grp(k).length ? `<h3 style="margin:18px 0 6px">${esc(T.q_for[k])}</h3><ul class="qlist">${grp(k).map(q => `<li><span class="tag ${q.kind === 'confirm' ? 'tag-q' : 'tag-e'}">${esc(T.q_kind[q.kind] || q.kind)}</span>${txt(q.text)}</li>`).join('')}</ul>` : '').join('');
     h += sec('questions', T.sec_questions, `<p class="muted">${esc(T.q_note)}</p>${qhtml}`);
   }
+  // manual import checklist
+  if ((d.manual_import || []).length) {
+    h += sec('manual', T.sec_manual, `<p class="muted">${esc(T.manual_note)}</p><div class="cards">${d.manual_import.map(x => `<div class="card"><h3>${esc(x.platform)}</h3>
+      ${safeUrl(x.url) ? `<p><a href="${safeUrl(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.url)}</a></p>` : ''}
+      ${(x.capture || []).length ? `<div class="lbl">${esc(T.manual_capture)}</div>${list(x.capture)}` : ''}</div>`).join('')}</div>`);
+  }
   // appendix
   let app2 = '';
+  if ((d.source_map || []).length) {
+    app2 += `<h3>${esc(T.app_map)}</h3><div class="tblwrap"><table><tr>${T.map_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.source_map.map(x => `<tr>
+      <td>${safeUrl(x.url) ? `<a href="${safeUrl(x.url)}" target="_blank" rel="noopener noreferrer">${esc(x.source)}</a>` : esc(x.source)}</td><td>${esc(x.kind)}</td>
+      <td>${chip(T.decision, x.decision)}</td><td>${txt(x.reason)}</td></tr>`).join('')}</table></div>`;
+  }
   if ((d.genericity || []).length) {
     app2 += `<h3>${esc(T.app_genericity)}</h3><div class="tblwrap"><table><tr>${T.gen_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.genericity.map(g => `<tr>
       <td>${txt(g.claim)}</td><td>${chip(T.gen.verdict, g.verdict)}</td><td>${chip(T.gen.substitution, g.substitution)}</td><td>${chip(T.gen.ubiquity, g.ubiquity)}</td>
@@ -496,7 +568,6 @@ function render(d) {
     app2 += `<h3>${esc(T.app_details)}</h3><div class="tblwrap"><table><tr>${T.det_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${det.map(([id, c]) => `<tr>
       <td>${esc((T.dims[id] || [id])[0])}</td><td>${esc(c.name)}</td><td>${c.assessable === false ? esc(T.not_assessable) : `${esc(c.score)}/${esc(c.max)}`}</td><td>${txt(c.note)}</td></tr>`).join('')}</table></div>`;
   }
-  const safeUrl = u => /^https?:\/\//i.test(String(u || '')) ? esc(u) : '';
   if ((d.sources || []).length) {
     app2 += `<h3>${esc(T.app_sources)}</h3><div class="tblwrap"><table><tr>${T.src_cols.map(c => `<th>${esc(c)}</th>`).join('')}</tr>${d.sources.map(s => `<tr><td>${esc(s.title)}</td><td>${esc(s.type)}</td><td>${esc(s.captured)}</td><td>${safeUrl(s.url) ? `<a href="${safeUrl(s.url)}" target="_blank" rel="noopener noreferrer">${esc(T.open)}</a>` : ''}</td></tr>`).join('')}</table></div>`;
   }

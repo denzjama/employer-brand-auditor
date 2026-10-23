@@ -221,6 +221,9 @@ Use these renderings in every reader-facing output. In a Russian conversation us
 | UNVERIFIED | not independently checked (this does not mean false) | не проверено независимо (это не значит «ложно») |
 | AUDITED MATERIAL / USER-SUPPLIED | your material (or: the public pages reviewed) / stated in the conversation | ваши материалы (или: изученные публичные страницы) / из разговора |
 | Collected material, source pack | public sources, saved sources | открытые источники, сохранённые источники |
+| Quick / deep collection | quick audit / deep audit | быстрый аудит / глубокий аудит |
+| Source map; included / excluded / unavailable / manual import | source map; used / excluded / unavailable / manual import | карта источников; взято / исключено / недоступно / ручной импорт |
+| Perception layer (employee reviews) | promise and perception | обещание и восприятие |
 | CONFIRM | confirm | уточнить |
 | EVIDENCE NEEDED | information needed | нужны данные |
 | PARAPHRASE | paraphrase (no quotation marks) | пересказ (без кавычек) |

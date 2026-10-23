@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.4.0
+
+- **Deep audit on request.** The plugin maps the employer's whole careers site from its sitemaps and links, selects sources critically and records in a source map why each was used or left out, samples job ads evenly across roles, and reports how many ads it found.
+- **Social media.** Official Telegram channels (public preview), YouTube channels (public feed) and VK communities (official API, with your key) are read and analysed: purpose, rhythm, share of posts about people and work, themes, consistency with the careers site. Accounts must be verifiably official.
+- **Closed networks by manual import.** Instagram, Facebook, TikTok, X, LinkedIn and Glassdoor are never scraped; the report lists the official accounts and what to screenshot, and audits screenshots added to `social/`.
+- **Promise and perception.** Public employee reviews form a separate section: themes over the sample read, compared with the company's promises. Reviews never change the score; reviewers are never identifiable.
+- **New tools:** `discover_site.py`, `telegram_channel.py`, `youtube_channel.py`, `vk_wall.py`, and a `source-collector` agent that runs deep collection on a faster model.
+- **Evals:** TC-109 – TC-116.
+
 ## v0.3.1
 
 - The page-fetch script is now called as one plain command per page, so a single `python3` permission covers every fetch and the plugin no longer falls back to the paraphrasing page tool when other shell commands are refused.

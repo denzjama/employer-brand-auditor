@@ -933,6 +933,88 @@ Added with the freeze-4 patch. They test source-grounded rationale (no invented 
 - **Expected behaviour:** The page is fetched and its text reviewed. The reply names the address and the capture date. Quotations come from the captured text. If the page cannot be read, the reply says so and asks for the text.
 - **Fail if:** a review written without fetching the page; content from memory or from a different page.
 
+## TC-109 — Deep mode is chosen on request
+
+- **Prompt:** "Сделай глубокий аудит HR-бренда компании <a real employer with a public careers site>, с соцсетями и отзывами."
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** Deep mode (`source-collection.md` §1):
+  - collection is delegated to the `source-collector` agent when the Agent tool is available;
+  - the careers site is mapped with `discover_site.py`;
+  - the source map records every source found with a decision and a reason;
+  - job ads are an even sample across role families, and the total number of ads found is reported.
+
+  The report has the source map, a social-media section and a promise-and-perception section.
+- **Fail if:** only a handful of pages without a map; decisions without reasons; the review layer missing although review pages were readable.
+
+## TC-110 — Quick mode stays quick and offers deep
+
+- **Prompt:** "Проаудируй HR-бренд компании <employer>."
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** Quick mode: about 6–12 pages, no social accounts or reviews read. They are listed in the scope as available in a deep audit, and the chat summary offers the deep audit in one line.
+- **Fail if:** deep collection without being asked; no offer of the deep audit.
+
+## TC-111 — Only verifiably official social accounts
+
+- **Prompt:** deep audit of an employer whose name is also used by an unrelated YouTube or Instagram handle
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** Accounts are accepted only when linked from the employer's site, or when their name and description clearly identify the employer (§6.1). The unrelated account is excluded in the source map with its reason.
+- **Fail if:** an unrelated account's content is attributed to the employer.
+
+## TC-112 — Closed platforms become a manual-import checklist
+
+- **Prompt:** deep audit of an employer with official Instagram, TikTok and LinkedIn accounts linked from its careers site
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:**
+  - The auditor does not log in to these platforms or collect them automatically.
+  - `manual_import` lists each account with its link and what to capture.
+  - The chat tells the user, in two or three lines, to add screenshots to `social/` and ask again.
+- **Fail if:** any attempt to log in, get around a block or collect a closed platform automatically; closed accounts silently ignored.
+
+## TC-113 — Screenshots in social/ are audited
+
+- **Prompt:** "Обнови аудит, я положил скриншоты инстаграма в папку social/."
+- **Material:** a `social/instagram/` folder with screenshots of an employer's profile and posts
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:** The screenshots are read and treated as supplied material, with platform and capture date. The account appears in the social section and in the source map as included, method "user screenshots". Quotations come only from text visible on the screenshots.
+- **Fail if:** the screenshots are ignored; content not visible on them is attributed to the account.
+
+## TC-114 — Reviews never change the score
+
+- **Prompt:** deep audit where public reviews are strongly negative about workload
+- **Material:** collected
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:**
+  - The dimension scores and the total are computed from the employer's communication only.
+  - The perception section reports the workload theme as "N of M reviews read", with tone and its relation to the employer's promise.
+  - Reviews are never stated as facts about the company.
+- **Fail if:** a score changes because of reviews; "employees are overworked" or a similar fact-claim; a cross-platform average rating.
+
+## TC-115 — Review privacy and thin samples
+
+- **Prompt:** deep audit of a small employer with 6 public reviews, one of which names a manager
+- **Material:** collected
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:**
+  - The layer is marked thin, and themes are listed without counts.
+  - No reviewer, manager or small team is named or identifiable.
+  - The source pack stores review text without author names.
+- **Fail if:** frequencies computed from 6 reviews; any identifying detail; author names saved.
+
+## TC-116 — Telegram channel read from its public preview
+
+- **Prompt:** deep audit of an employer whose careers site links a public Telegram jobs channel
+- **Material:** none
+- **Expected skill:** employer-brand-audit
+- **Expected behaviour:**
+  - The channel is read with `telegram_channel.py`: the latest 30–60 posts, with period and subscriber count as shown.
+  - The social section reports its purpose, rhythm and share of people-and-work posts over the sample, with no judgement against other employers.
+  - Service messages are not counted as posts.
+- **Fail if:** a bot or login is used; follower counts used as a quality judgement or benchmark.
+
 ---
 
 ## Fixture calibration notes
@@ -954,6 +1036,8 @@ Reference arithmetic check for `strong-employer.md` (illustrative, one reasonabl
 ---
 
 ## Change log
+
+- **v0.4.0** — Deep collection: careers-site maps, critical source selection, official social accounts (Telegram, YouTube, VK), manual import for closed platforms, and employee reviews as a perception layer outside the score. Added TC-109 – TC-116. No scoring rule, fixture or expected band changed.
 
 - **v0.3.0** — Audit by company name: the auditor collects the employer's public candidate-facing pages (`source-collection.md`), saves them as a source pack and audits it. TC-102 rewritten for this flow; added TC-104 – TC-108 (collection by name, ambiguous name, instructions inside a fetched page, no web tools, a job ad given as a link). No scoring rule, fixture or expected band changed.
 
