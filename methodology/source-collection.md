@@ -181,7 +181,7 @@ Reviews show how the employer is seen from outside. They are not the employer's 
 
 ### 7.1 Sources and access
 
-- **Review sites:** the main ones for the market, for example Dream Job and Habr Career ratings in Russia, Glassdoor, Indeed and kununu internationally.
+- **Review sites:** the main ones for the market, for example Dream Job and Habr Career ratings in Russia, Glassdoor, Indeed and kununu internationally. Internationally, also try the public employer pages on Comparably and InHerSight: the large sites often block automated access, and these smaller ones may still be readable. Every site tried goes into the source map with its result.
 - **Access:** fetch public review pages with `fetch_page.py`. Many review sites block automated access or require a login. Treat those as manual import (§6.3): the user can add screenshots of the rating page and recent reviews to `social/reviews/`.
 
 ### 7.2 Rules

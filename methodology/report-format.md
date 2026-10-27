@@ -76,7 +76,7 @@ After the file is written, the chat reply contains only the following, in the us
 5. **The file:** its path, and that it opens in any browser and can be saved as PDF with the button in the corner.
 6. **Questions, if any.** At most one or two questions whose answers would change a conclusion.
 
-The chat summary does not repeat the scorecard, the ledger, the genericity table or the rewrites. It follows the writing rules in section 6, including no first person, and says nothing about how the file was built or checked.
+The chat summary does not repeat the scorecard, the ledger, the genericity table or the rewrites. It follows the writing rules in section 6, including no first person, and says nothing about how the file was built or checked. The same applies to any progress notes written while the audit runs: one short line each, about the audit, never about tools, files or checks.
 
 ---
 

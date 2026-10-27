@@ -4,7 +4,7 @@ Project instructions for Claude Code sessions working on this repository.
 
 ## What this project is
 
-Employer Brand Auditor is a skills-only plugin (v0.4.0) with one helper agent that audits employer-brand communication through a candidate's eyes. It ships three skills (`employer-brand-audit`, `evp-stress-test`, `career-content-review`), a canonical methodology, synthetic eval fixtures, and a standard-library validator. Its workflow is fixed: **DIAGNOSE → EXPLAIN → PRIORITIZE → IMPROVE.**
+Employer Brand Auditor is a skills-only plugin (v0.4.1) with one helper agent that audits employer-brand communication through a candidate's eyes. It ships three skills (`employer-brand-audit`, `evp-stress-test`, `career-content-review`), a canonical methodology, synthetic eval fixtures, and a standard-library validator. Its workflow is fixed: **DIAGNOSE → EXPLAIN → PRIORITIZE → IMPROVE.**
 
 ## Rules for changing the project
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.1
+
+- **Complete texts.** The collector saves pages, posts and reviews in full, so every quotation can be checked against the saved source.
+- **Quieter chat.** Progress notes during an audit are one short line about the audit; tools, files and checks are never narrated.
+
 ## v0.4.0
 
 - **Deep audit on request.** The plugin maps the employer's whole careers site from its sitemaps and links, selects sources critically and records in a source map why each was used or left out, samples job ads evenly across roles, and reports how many ads it found.

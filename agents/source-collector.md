@@ -26,6 +26,7 @@ The methodology lives in the plugin's `methodology/` folder, two levels above th
 2. **Discover, map, select and capture.** Use the scripts in `<skill directory>/scripts/`.
    - Run each as one plain command: `python3 <absolute path>/scripts/<script>.py <arguments>`, with no `cd`, `&&` or pipes.
    - Use the shell for nothing else.
+   - Run every command in the foreground and wait for it. Never start background commands, `sleep`, or wait loops.
    - Read files with Read and Glob, and write files with Write.
    - Use WebSearch only to find sources. Use WebFetch only where the methodology allows it.
 3. **Respect every limit.**

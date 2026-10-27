@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 PLUGIN_NAME = "employer-brand-auditor"
-PLUGIN_VERSION = "0.4.0"
+PLUGIN_VERSION = "0.4.1"
 
 EXPECTED_SKILLS = ("employer-brand-audit", "evp-stress-test", "career-content-review")
 
