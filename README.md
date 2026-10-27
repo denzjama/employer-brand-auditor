@@ -88,6 +88,8 @@ Anything the rewrite could not say without more information goes to the company'
 - a three-step plan with effort, who to involve and what to watch;
 - an appendix with the full analysis.
 
+**See it on a real employer.** [Employer Brand Reviews](https://denzjama.github.io/eb-reports/) publishes deep audits of well-known employers' public careers material, each with the article and the full report.
+
 ## Three skills, picked automatically
 
 | Ask for… | Skill | You get |
